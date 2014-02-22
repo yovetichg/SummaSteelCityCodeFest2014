@@ -2,6 +2,7 @@ package org.trwib.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.trwib.model.QuestionResponse;
 
 /**
@@ -10,13 +11,12 @@ import org.trwib.model.QuestionResponse;
  */
 public interface QuestionResponseRepository extends JpaRepository<QuestionResponse, Long> {
 
-    /**
-     * Gets the first question
-     * @return
-     */
     @Query("SELECT q FROM Question q WHERE q.isFirst = true")
     QuestionResponse getFirst();
 
-//    @Query("SELECT q FROM Question q WHERE q. = LOWER(:lastName)")
-//    QuestionResponse(@Param("questionId") Long questionId, @Param("yesResponse") boolean yesResponse);
+    @Query("SELECT q.yesResponse FROM Question q WHERE q.id = :questionId")
+    QuestionResponse getNextYesResponse(@Param("questionId") Long questionId);
+
+    @Query("SELECT q.noResponse FROM Question q WHERE q.id = :questionId")
+    QuestionResponse getNextNoResponse(@Param("questionId") long questionId);
 }

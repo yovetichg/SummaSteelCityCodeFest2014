@@ -1,9 +1,10 @@
 package org.trwib.model;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -22,6 +23,14 @@ public class Question extends QuestionResponse {
     @Column(name = "is_first")
     private Boolean isFirst;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "yes_id")
+    private QuestionResponse yesResponse;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "no_id")
+    private QuestionResponse noResponse;
+
     @Override
     public String getDescription() {
         return question;
@@ -39,13 +48,24 @@ public class Question extends QuestionResponse {
         return isFirst;
     }
 
-    public void setFirst(Boolean first) {
+    protected void setFirst(Boolean first) {
         isFirst = first;
     }
 
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+    public QuestionResponse getYesResponse() {
+        return yesResponse;
+    }
+
+    protected void setYesResponse(QuestionResponse yesResponse) {
+        this.yesResponse = yesResponse;
+    }
+
+    public QuestionResponse getNoResponse() {
+        return noResponse;
+    }
+
+    protected void setNoResponse(QuestionResponse noResponse) {
+        this.noResponse = noResponse;
     }
 
 }
