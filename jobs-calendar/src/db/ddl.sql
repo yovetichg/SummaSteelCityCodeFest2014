@@ -48,3 +48,22 @@ CREATE TABLE `event_category_association` (
   CONSTRAINT `event_id` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `event_category_id` FOREIGN KEY (`event_category_id`) REFERENCES `event_category` (`question_response_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `provider` (
+  `Id` int(11) NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `address_1` varchar(45) NOT NULL,
+  `address_2` varchar(45) DEFAULT NULL,
+  `city` varchar(45) NOT NULL,
+  `state` varchar(2) DEFAULT NULL,
+  `zip` varchar(10) DEFAULT NULL,
+  `pre_employment` bit(1) DEFAULT b'0',
+  `emp_support` bit(1) DEFAULT b'0',
+  `job_training` bit(1) DEFAULT b'0',
+  `job_retention` bit(1) DEFAULT b'0',
+  `support_services` bit(1) DEFAULT b'0',
+  `programs` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id_UNIQUE` (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

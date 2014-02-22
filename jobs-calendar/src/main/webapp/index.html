@@ -2,6 +2,12 @@
     <head>
         <meta charset="utf-8">
 	   <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        
+        <link rel="apple-touch-icon" href="static/img/touch-icon-iphone-60x60-precomposed.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="static/img/touch-icon-ipad-76x76-precomposed.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="static/img/touch-icon-iphone-retina-120x120-precomposed.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="static/img/touch-icon-ipad-retina-152x152-precomposed.png">
         
         <link rel="stylesheet" type="text/css" href="static/css/jquery.mobile.icons.min.css" />
         <link rel="stylesheet" type="text/css" href="static/css/jquery.mobile-1.4.1.min.css" />
@@ -27,13 +33,14 @@
             <h1>Are you looking for a job?</h1>
             <table width="100%">
                 <tr>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">Yes</button></td>
+                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">Yes</button></td>
                     <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">No</button></td>
                 </tr>
             </table>            
         </section>
     </div>
     
+<<<<<<< HEAD
     <div data-role="page" id="page2">
         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
             <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
@@ -67,6 +74,8 @@
             </table>
         </section>
     </div>
+=======
+>>>>>>> f3b90ec718558a093763da7259c36352f9be8b4e
         
      <div data-role="page" id="EventList" data-theme="a" >
          <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
@@ -100,7 +109,22 @@
 
                 
      </div>
-        
+    
+    <div data-role="page" id="question">
+        <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar-a" role="nav-bar">
+            <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
+         </header>
+        <section class="ui-content" role="main">
+            
+            <h1>Do you have an accurate and up to date resume?</h1>
+            <table width="100%">
+                <tr>
+                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">Yes</button></td>
+                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">No</button></td>
+                </tr>
+            </table>
+        </section>
+    </div>
         
     
 
