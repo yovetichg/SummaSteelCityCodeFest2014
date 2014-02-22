@@ -3,7 +3,7 @@ class GCE_Feed{
 	private $feed_id = 1;
 	private $feed_title = '';
 	private $feed_url = 'http://www.google.com/calendar/feeds/pittsburghworks%40gmail.com/public/basic';
-	private $max_events = 25;
+	private $max_events = 2145916800;
 	private $cache_duration = 43200;
 	private $date_format = '';
 	private $time_format = '';
@@ -20,13 +20,15 @@ class GCE_Feed{
 
     public function exec($url)
     {
+		echo $url."<br />";
+
 		// fetch XML
 		$ch = curl_init();
 
 		curl_setopt_array($ch, array(
 			CURLOPT_URL => $url,
 			CURLOPT_HEADER => true,
-			CURLOPT_TIMEOUT => 10,
+			CURLOPT_TIMEOUT => 200,
 			CURLOPT_RETURNTRANSFER => true
 		));
 
@@ -73,7 +75,7 @@ class GCE_Feed{
 
 		$query .= '&start-min=' . date( 'Y-m-d\TH:i:s', $this->feed_start + ($this->gmt_offset * 3600) );
 		$query .= '&start-max=' . date( 'Y-m-d\TH:i:s', $this->feed_end + ($this->gmt_offset * 3600) );
-		//$query .= '&max-results=' . $this->max_events;
+		$query .= '&max-results=' . $this->max_events;
 
 		if ( ! empty( $this->timezone ) )
 			$query .= '&ctz=' . $this->timezone;
@@ -144,7 +146,7 @@ class GCE_Feed{
 	//Convert an ISO date/time to a UNIX timestamp
 	function iso_to_ts( $iso ) {
 		sscanf( $iso, "%u-%u-%uT%u:%u:%uZ", $year, $month, $day, $hour, $minute, $second );
-		return mktime( $hour, $minute, $second, $month, $day, $year );
+		return date('Y-m-d H:i:s', mktime( $hour, $minute, $second, $month, $day, $year ));
 	}
 
 	//Return error message, or false if no error occurred
