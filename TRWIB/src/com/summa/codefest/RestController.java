@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,7 +51,8 @@ public class RestController {
 	}
 
 	@RequestMapping(value = "/getevents", method = RequestMethod.GET, produces="application/json")
-	public @ResponseBody String getEvents() {
+	public @ResponseBody String getEvents(
+				@RequestParam(value = "wrapper", required = false) String wrapper) {
 		DAO dao = new DAO();
 		EntityManager em = dao.getEntityManager();
 		
@@ -73,6 +73,8 @@ public class RestController {
 		}
 
 		em.close();
+		if (wrapper != null)
+			return wrapper + "(" + str.toString() + ")";
 		return str.toString();
 	}
 
