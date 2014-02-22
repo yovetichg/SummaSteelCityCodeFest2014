@@ -9,6 +9,8 @@ var testeventsVM = {
         node_port: ko.observable("13390")
     };
 
+var questionsVM = ko.observableArray([]);
+
 
 
 
@@ -37,6 +39,11 @@ var eventslistTestVM = ko.observableArray([
     
 ]);
     
+var eventslistVM = ko.observableArray([]);
+
+getevents();
+getquestions();
+    
 
 function viewModel(){
     var self = this;
@@ -44,50 +51,63 @@ function viewModel(){
    
     self.events = eventsVM;
     self.eventsTEST = eventslistTestVM;
+    self.questions = questionsVM;
 	
 	}
 	
 ko.applyBindings(new viewModel());
 
 var vm = new viewModel();
+    
 
-
-
-function eventDetail(eventid) {
-        var request = $.ajax({
-
-            url: "http://" + localCredentialsVM.localServerID() + "?format=JSON",
-            type: 'POST',
-            // data: "{\"requests\": [{\"request_id\": 0, \"session_id\": \"<your session id>\", \"get_open_alarm_latest_update\": {\"alarm_id\": <uint64>}]}"
-            data: "{\"requests\": [{\"request_id\": 0, \"session_id\": 0, \"get_open_alarm_latest_update\": {\"alarm_id\": "+ alarmid + "}}]}",
-            contextType: 'json',
-            dataType: 'json',
-            processdata: true,
+function getquestions() {
+    var request = $.ajax({
+            url:"http://10.93.126.85:8080/TRWIB/restful/getquestions",
+            type: 'GET',
+            dataType:'jsonp',
+            jsonpCallback: 'questions',
+            jsonp: 'wrapper',
             success: function (data) {
-
-  //            console.log(data.responses[0].request_response.login.session_id);
-                //console.log("Detail call good");
-                $.each(data.responses, function (i, post2) {
-
-                    eventDetailVM.channel_name(post2.request_response.get_open_alarm_latest_update.alarm.channel.name);
-
-                });
-
-
-
+            console.log("question call good");
+            console.log(data);
+            
             },
             error: function (request, status, error) {
-                console.log("Error status " + status);
-                console.log("Error request status text: " + request.statusText);
-                console.log("Error request status: " + request.status);
-                console.log("Error request response text: " + request.responseText);
-                console.log("Error response header: " + request.getAllResponseHeaders());
-                $("#error").html(status);
-                document.getElementById('authresults').innerHTML = "Sessionid ERROR";
-               
+                console.log("Error status " + status); 
             }
-
-
         });
-
     }
+
+    function getevents() {
+    var request = $.ajax({
+            url:"http://10.93.126.85:8080/TRWIB/restful/getevents",
+            type: 'GET',
+            dataType:'jsonp',
+            jsonpCallback: 'events',
+            jsonp: 'wrapper',
+            success: function (data) {
+            console.log("event call good");
+            console.log(data);
+             $.each(data, function (i, item) {
+                                
+                            
+                                eventsVM.push(item);
+                             
+                                eventsVM.valueHasMutated();
+             });
+            
+            },
+            error: function (request, status, error) {
+                console.log("Error status " + status); 
+            }
+        });
+    }
+
+    
+    
+    
+
+
+
+
+  
