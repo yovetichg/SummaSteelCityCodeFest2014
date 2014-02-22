@@ -20,6 +20,20 @@ public class DataJPAExampleInitializer implements WebApplicationInitializer {
     private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
     private static final String DISPATCHER_SERVLET_MAPPING = "/api/*";
 
+    /**
+     * <filter>
+     <filter-name>OpenSessionInViewFilter</filter-name>
+     <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+     </filter>
+
+     <filter-mapping>
+     <filter-name>OpenSessionInViewFilter</filter-name>
+     <url-pattern>/*</url-pattern>
+     </filter-mapping>
+     * @param servletContext
+     * @throws ServletException
+     */
+
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();

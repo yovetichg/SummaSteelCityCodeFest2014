@@ -1,5 +1,7 @@
 package org.trwib.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,13 +27,16 @@ public class Question extends QuestionResponse {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "yes_id")
+    @JsonIgnore
     private QuestionResponse yesResponse;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "no_id")
+    @JsonIgnore
     private QuestionResponse noResponse;
 
     @Override
+    @JsonIgnore
     public String getDescription() {
         return question;
     }

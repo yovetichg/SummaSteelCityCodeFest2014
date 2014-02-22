@@ -1,5 +1,6 @@
 package org.trwib.repository;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ import static junit.framework.Assert.assertTrue;
 /** @author bgray */
 @ContextConfiguration(classes = ApplicationContext.class, loader = AnnotationConfigContextLoader.class)
 @RunWith(SpringJUnit4ClassRunner.class)
+@Ignore
 public class QuestionResponseRepositoryTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(QuestionResponseRepositoryTest.class);
