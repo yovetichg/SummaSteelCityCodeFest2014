@@ -29,6 +29,15 @@
                       </a>
                   </li>
                   <!-- /ko -->
+                  <!-- ko foreach: events -->
+              <li>
+                  <a>
+                    <div data-bind="text: id"></div>
+                    <div data-bind="text: description"></div>
+                    <div data-bind="text: end"></div>  
+                  </a>
+              </li>
+              <!-- /ko -->
               </ul>  
          </section>  
 
