@@ -14,14 +14,15 @@
     </head>
     <body onload="">
      <div data-role="page" id="EventList" data-theme="a" >
-         <ul data-role="listview">
-             <li><a>linked test</a></li>
-             <li>test2</li>
-             <li>test3</li>
-         </ul>
          
-          <ul id="list-events" data-role="listview" data-bind=" foreach: eventsTEST" >
-              <li> <span data-bind="text: id"></span>  <span data-bind="text: name"></span></li>
+          <ul id="list-events" data-role="listview" >
+              <li data-role="list-divider" role="heading">Head</li>
+              <!-- ko foreach: eventsTEST -->
+              <li><a>
+                   <span data-bind="text: id"></span>  <span data-bind="text: name"></span>
+                  </a>
+              </li>
+              <!-- /ko -->
           </ul>    
 
 
