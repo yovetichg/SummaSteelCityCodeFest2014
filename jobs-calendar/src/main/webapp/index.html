@@ -13,19 +13,24 @@
         <title>CodeFest</title>
     </head>
     <body onload="">
+        
      <div data-role="page" id="EventList" data-theme="a" >
-         
-          <ul id="list-events" data-role="listview" >
-              <li data-role="list-divider" role="heading">Head</li>
-              <!-- ko foreach: eventsTEST -->
-              <li>
-                  <a>
-                    <div data-bind="text: name"></div>
-                    <div data-bind="text: startDate"></div>
-                  </a>
-              </li>
-              <!-- /ko -->
-          </ul>    
+         <header class="ui-header ui-bar-a" role="banner">
+            <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1> 
+         </header>
+         <section class="ui-content" role="main">
+              <ul id="list-events" data-role="listview" >
+                  <li data-role="list-divider" role="heading">Head</li>
+                  <!-- ko foreach: eventsTEST -->
+                  <li>
+                      <a>
+                        <div data-bind="text: name"></div>
+                        <div data-bind="text: startDate"></div>
+                      </a>
+                  </li>
+                  <!-- /ko -->
+              </ul>  
+         </section>  
 
 
                 
