@@ -18,8 +18,10 @@
           <ul id="list-events" data-role="listview" >
               <li data-role="list-divider" role="heading">Head</li>
               <!-- ko foreach: eventsTEST -->
-              <li><a>
-                   <span data-bind="text: id"></span>  <span data-bind="text: name"></span>
+              <li>
+                  <a>
+                    <div data-bind="text: name"></div>
+                    <div data-bind="text: startDate"></div>
                   </a>
               </li>
               <!-- /ko -->
