@@ -13,7 +13,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -32,7 +31,6 @@ import java.util.Properties;
  */
 @Configuration
 @ComponentScan(basePackages = {"org.trwib"})
-@EnableWebMvc
 @ImportResource("classpath:applicationContext.xml")
 @PropertySource("classpath:application.properties")
 public class ApplicationContext {
