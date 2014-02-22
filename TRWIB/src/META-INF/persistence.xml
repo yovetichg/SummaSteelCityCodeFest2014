@@ -3,6 +3,7 @@
 	<persistence-unit name="TRWIB">
 		<class>com.summa.codefest.User</class>
 		<class>com.summa.codefest.Event</class>
+		<class>com.summa.codefest.Question</class>
      <properties>
        <property name="javax.persistence.jdbc.url"
                  value="jdbc:mysql://localhost/codefest"/>
