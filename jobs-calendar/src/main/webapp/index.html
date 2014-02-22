@@ -14,13 +14,48 @@
     </head>
     <body onload="">
         
+    <!------------------------------- Page 1 ------------------------------------>
+        
+    <div data-role="page" id="page1">
+        <header data-id="foo1" data-position="fixed" class="ui-header ui-bar-a" role="nav-bar">
+            <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
+         </header>
+        <section class="ui-content" role="main">
+            <div>Are you looking for a job?</div>
+            <a href="#page2">Yes</a>
+            <a href="#page2">No</a>
+        </section>
+    </div>
+    
+    <div data-role="page" id="page2">
+        <header data-id="foo1" data-position="fixed" class="ui-header ui-bar-a" role="nav-bar">
+            <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
+         </header>
+        <section class="ui-content" role="main">
+            <div>Do you have a goal occupation?</div>
+            <a href="#page3">Yes</a>
+            <a href="#page3">No</a>
+        </section>
+    </div>
+
+    <div data-role="page" id="page3">
+        <header data-id="foo1" data-position="fixed" class="ui-header ui-bar-a" role="nav-bar">
+            <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
+         </header>
+        <section class="ui-content" role="main">
+            <div>Do you have an accurate and up to date resume?</div>
+            <a href="#EventList">Yes</a>
+            <a href="#EventList">No</a>
+        </section>
+    </div>
+        
      <div data-role="page" id="EventList" data-theme="a" >
-         <header class="ui-header ui-bar-a" role="banner">
+         <header data-id="foo1" data-position="fixed" class="ui-header ui-bar-a" role="nav-bar">
             <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1> 
          </header>
          <section class="ui-content" role="main">
               <ul id="list-events" data-role="listview" >
-                  <li data-role="list-divider" role="heading">Head</li>
+                  <li data-role="list-divider" role="heading">Resume Workshops</li>
                   <!-- ko foreach: eventsTEST -->
                   <li>
                       <a>
@@ -44,11 +79,11 @@
 
                 
      </div>
-     
-     <div data-role="page" id="page2" >
+        
+        
+    
 
-                   
-     </div>
+     
      
         <script type="text/javascript" src="static/js/lib/knockout-3.0.0.js"></script>
         <script type="text/javascript" src="static/js/lib/jquery.js"></script>
