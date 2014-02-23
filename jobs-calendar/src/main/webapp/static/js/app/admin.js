@@ -77,7 +77,7 @@ function getevents(catID) {
 
 				var html = '<tr>';
 
-				html += '<td><a href="#" class="edit-event"><img class="media-object pull-left" data-eventid=' + item.eventId + ' data-src="holder.js/16x16" src="css/images/edit-icon-16x16.png"></a></td>';
+				html += '<td><a href="#" class="edit-event"><img class="media-object pull-left" data-eventid=' + item.eventId + ' data-src="holder.js/16x16" src="static/css/images/edit-icon-16x16.png"></a></td>';
 				html += '<td>' + item.name + '</td>';
 				html += '<td>' + item.location + '</td>';
 				html += '<td>' + utctimecnv(item.startDt) + '</td>';
