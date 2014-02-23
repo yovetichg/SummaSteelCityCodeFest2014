@@ -15,8 +15,15 @@ $(function() {
 
 
 function showEditEvent(addEvent) {
-	if (addEvent)
+	if (addEvent) {
 		$('#event-mode').html("Add Event");
+
+			$('#name').val("");
+			$('#provider').html("");
+			$('#description').html("");
+			$('#startdt').val("");
+			$('#enddt').val("");
+	}
 	else
 		$('#event-mode').html("Edit Event");
 
@@ -88,6 +95,15 @@ function getevent(eventId) {
 		success: function(data) {
 			console.log("event call good");
 			console.log(data);
+
+
+			$('#name').val(data.name);
+			$('#provider').html(data.location);
+			$('#description').html(data.description);
+			$('#startdt').val(utctimecnv(data.startDt));
+			$('#enddt').val(utctimecnv(data.endDt));
+
+			showEditEvent(false);
 
 /*			$.each(data.event, function(i, item) {
 
