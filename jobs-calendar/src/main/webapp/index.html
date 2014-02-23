@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="static/css/jquery.mobile.structure-1.4.1.min.css" />
         <link rel="stylesheet" type="text/css" href="static/css/pittsburgh-dark.css" />
         <link rel="stylesheet" type="text/css" href="static/css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/splash.css" />
        
        
  
@@ -22,6 +23,17 @@
     <body onload="">
         
     <!------------------------------- Page 1 ------------------------------------>
+
+        <div data-role="page" id="splashScreen">
+            <table>
+                <tr><td><img src="static/img/apple-touch-icon-ipad-retina-152x152-precomposed.png"/ ></td>
+                    <td><p class="splashText">Three Rivers Workforce Investment Board</p></td></tr>
+            </table>
+            <button onclick="$.mobile.changePage('#page1')">Local Jobs and Events</button>
+
+        </div>
+
+        <link rel="stylesheet" type="text/css" href="static/css/splash.css" />
         
     <div data-role="page" id="page1">
         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">

@@ -1,0 +1,19 @@
+
+#splashScreen
+{
+    margin: 0 auto;
+    text-align:center;
+}
+
+.splashText
+{
+    color: black;
+    font-size: 32px;
+    text-shadow: 5px 3px 5px #F78429;
+}
+
+table
+{
+    text-align:center;
+    margin: 0 auto;
+}
