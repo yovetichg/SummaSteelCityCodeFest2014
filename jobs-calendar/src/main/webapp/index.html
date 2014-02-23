@@ -26,14 +26,37 @@
     <div data-role="page" id="page1">
         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
             <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
+            <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
             <h1 data-icon="bars" class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
          </header>
-        <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
+        <div data-display="overlay" data-role="panel" id="menu">
+            <ul data-role="listview">
+              <li><a href="#">View All Events</a></li>
+              <li><a href="#">Start Over</a></li>
+              <li data-role="collapsible" data-iconpos="right" data-inset="false">
+                <h2>View By Category</h2>
+                <ul data-role="listview" data-theme="b">
+                  <li><a href="#">Interest Assessment</a></li>
+                  <li><a href="#">Resume Workshops</a></li>
+                  <li><a href="#">Interview Workshops</a></li>
+                  <li><a href="#">Hiring/Recruitment</a></li>
+                  <li><a href="#">Interest Assessment</a></li>
+                  <li><a href="#">Networking/Job Clubs</a></li>
+                  <li><a href="#">Computer Workshops</a></li>
+                  <li><a href="#">Short-Term Training</a></li>
+                  <li><a href="#">Soft Skills Workshops</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Calendar</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
         <section class="ui-content" role="main">
             <h1>Are you looking for a job?</h1>
             <table width="100%">
                 <tr>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">Yes</button></td>
+                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">Yes</button></td>
                     <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">No</button></td>
                 </tr>
             </table>            
