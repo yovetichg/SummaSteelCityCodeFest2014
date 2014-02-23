@@ -336,6 +336,22 @@ function FindEventOnMap(address) {
      $.mobile.changePage("#map_canvas", { transition: "slide"});
     return true;
 }  
+
+function save2cal() {
+    
+    
+    msgData1 = Date(eventDetailVM.startDt());
+    msgData2 = Date(eventDetailVM.endDt());
+    msgData3 = eventDetailVM.location();
+    
+   var icsMSG = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Our Company//NONSGML v1.0//EN\nBEGIN:VEVENT\nUID:me@google.com\nDTSTAMP:20120315T170000Z\nATTENDEE;CN=My Self ;RSVP=TRUE:MAILTO:me@gmail.com\nORGANIZER;CN=Me:MAILTO::me@gmail.com\nDTSTART:" + msgData1 +"\nDTEND:" + msgData2 +"\nLOCATION:" + msgData3 + "\nSUMMARY:Our Meeting Office\nEND:VEVENT\nEND:VCALENDAR";
+    
+    
+    window.open( "data:text/calendar;charset=utf8," + escape(icsMSG));
+    
+}
+   
+
     
     
 
