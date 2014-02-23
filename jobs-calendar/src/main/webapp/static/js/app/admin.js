@@ -55,9 +55,9 @@ function showEventList(categoryId) {
 
 function getevents(catID) {
 	if (catID == 19) {
-		urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/allevents";
+		urlconcat = baseUrl + "allevents";
 	} else {
-		urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/events/" + catID;
+		urlconcat = baseUrl + "events/" + catID;
 	}
 	var request = $.ajax({
 		url: urlconcat,
@@ -104,7 +104,7 @@ function getevents(catID) {
 function getevent(eventId) {
 
 	var request = $.ajax({
-		url: urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/eventDetail/" + eventId,
+		url: urlconcat = baseUrl + "eventDetail/" + eventId,
 		type: 'GET',
 		dataType: 'jsonp',
 		jsonpCallback: 'events',
@@ -132,7 +132,7 @@ function getevent(eventId) {
 function getcategories(success) {
     
     var request = $.ajax({
-            url:"http://10.93.126.85:8080/jobs-calendar/api/categories",
+            url:baseUrl + "categories",
             type: 'GET',
             dataType:'jsonp',
             jsonpCallback: 'categories',

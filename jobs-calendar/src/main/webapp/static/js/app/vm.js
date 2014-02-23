@@ -100,10 +100,10 @@ var vm = new viewModel();
 
 function getquestions(id,answer) {
     if (id == 0){
-            urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/question";
+            urlconcat = baseUrl + "question";
             }
             else {
-            urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/question/" + id + "/" + answer;            
+            urlconcat = baseUrl + "question/" + id + "/" + answer;
             };
     
     var request = $.ajax({
@@ -145,10 +145,10 @@ function getquestions(id,answer) {
 function getevents(catID) {
     categoryIDVM(catID);
     if (catID == 19){
-            urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/allevents";
+            urlconcat = baseUrl + "allevents";
             }
             else {
-            urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/events/" + catID ;            
+            urlconcat = baseUrl + "events/" + catID ;
             };
     var request = $.ajax({
             url:urlconcat,
@@ -179,7 +179,7 @@ function getevents(catID) {
 
 function geteventDetail(eventID) {
    
-            urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/eventDetail/" + eventID ;            
+            urlconcat = baseUrl + "eventDetail/" + eventID ;
            
         var request = $.ajax({
             url:urlconcat,
@@ -231,7 +231,7 @@ function geteventDetail(eventID) {
 function getcategories() {
     
     var request = $.ajax({
-            url:"http://10.93.126.85:8080/jobs-calendar/api/categories",
+            url:baseUrl + "categories",
             type: 'GET',
             dataType:'jsonp',
             jsonpCallback: 'categories',
@@ -375,4 +375,3 @@ function startOver() {
 
 
 
-  
