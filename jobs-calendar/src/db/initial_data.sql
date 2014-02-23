@@ -16,17 +16,17 @@ INSERT INTO question (question_response_id, question, yes_id, no_id) VALUES
 (8,"Are you interested in Short-Term Training  programs in HealthCare, Energy, or Manufacturing?",17,19),
 (9,"Are you interested in advancing your Soft Skills (Networking, Professional Development)?",18,19);
 
-INSERT INTO event_category (question_response_id, description) VALUES 
-(10,"Interest Assessment"),
-(11,"Resume Workshops"),
-(12,"Interview Workshops"),
-(13,"Hiring/Recruitment"),
-(14,"Interest Assessment"),
-(15,"Networking/Job Clubs"),
-(16,"Computer Workshops"),
-(17,"Short-Term Training"),
-(18,"Soft Skills Workshops"),
-(19,"All Events");
+INSERT INTO `event_category` VALUES (10,'Interest Assessment','We think you would benefit with some assistance in deciding your career direction.'),
+(11,'Resume Workshops','A good resume is important in marketing skills to prospective employers.  We recommend workshops to help you develop an excellent resume.'),
+(12,'Interview Workshops','Your presentation to a prospective employer is very important.  Here are events that will help you prepare to get the job you want.'),
+(13,'Hiring/Recruitment','You are ready to find a job! Here are some events where you can meet prospective employers.'),
+(14,'Interest Assessment','We think you would benefit with some assistance in deciding your career direction.'),
+(15,'Networking/Job Clubs','Meeting other job seekers can help you find ideal employers.  Here are some opportunites we recommend.'),
+(16,'Computer Workshops','Technology is the path to the future - don\'t get left behind!  We offer many excellent technical workshops.'),
+(17,'Short-Term Training','Want to learn a skill fast?  Here are some opportunities to improve your skills.'),
+(18,'Soft Skills Workshops','These events will provide you with an opportunity to work on your professional habits and attitudes to make you a more desirable employee.'),
+(19,'All Events','Show all events registered with our organization.');
+
 
 LOCK TABLES `provider` WRITE;
 /*!40000 ALTER TABLE `provider` DISABLE KEYS */;
