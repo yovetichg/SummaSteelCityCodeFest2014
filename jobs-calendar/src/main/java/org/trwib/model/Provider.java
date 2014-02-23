@@ -15,6 +15,7 @@ public class Provider implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="provider_id")
 	private int id;
 
 	@Column(name="name")

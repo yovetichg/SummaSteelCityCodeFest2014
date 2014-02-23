@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.trwib.dto.EventsDto;
-import org.trwib.dto.QuestionResponseDto;
 import org.trwib.model.Event;
-import org.trwib.model.QuestionResponse;
 import org.trwib.service.EventService;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
