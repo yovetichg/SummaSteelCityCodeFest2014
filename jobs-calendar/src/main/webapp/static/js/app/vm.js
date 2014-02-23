@@ -363,7 +363,12 @@ function ISODateString(d){
  function pad(n){return n<10 ? '0'+n : n}
  return d.getFullYear() + pad(d.getUTCMonth()+1) + pad(d.getUTCDate())+'T'+ pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + pad(d.getUTCSeconds())+'Z'}
    
-
+function startOver() {
+    getquestions(0,'yes');
+    $.mobile.changePage("#page1", { transition: "slide"});
+}
+    
+    
     
     
 
