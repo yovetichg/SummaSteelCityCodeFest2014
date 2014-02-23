@@ -49,13 +49,13 @@
          </header>
         <div data-display="overlay" data-role="panel" id="menu1" data-theme="b">            
             <ul data-role="listview">
-              <li><a href="#">View All Events</a></li>
+              <li><a href="" data-bind="click: function(){getevents(19)}">View All Events</a></li>
               <li><a href="#page1">Start Over</a></li>
               <li data-role="collapsible" data-iconpos="right" data-inset="false">
                 <h2>View By Category</h2>
                 <ul data-role="listview" data-theme="b">
                   <!-- ko foreach: categories -->
-                  <li><a href="#"><span data-bind="text:description"></span></a></li>
+                  <li><a href="#" data-bind="click: function(){getevents($data.id)}"><span data-bind="text:description"></span></a></li>
                 <!-- /ko -->
                 </ul>
               </li>
@@ -106,7 +106,7 @@
         </div>
          <section class="ui-content" role="main">
               <ul id="list-events" data-role="listview" >
-                  <li data-role="list-divider" role="heading">Resume Workshops</li>
+                  <li data-role="list-divider" role="heading" data-bind="text: filteredCategory.id"></li>
                   <!-- ko foreach: events -->
                   <li>
                         <a href="" data-role="button" data-bind="click: function() {eventDetail($data.eventId)}">

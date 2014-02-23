@@ -84,6 +84,11 @@ function viewModel(){
         }
     }
     
+     self.filteredCategory = ko.computed(function() {
+        return ko.utils.arrayFilter(self.categoryID(), function (cat) { 
+            return (cat.id == self.categories());
+        })
+    }, self);
     
 	
 	}
@@ -138,6 +143,7 @@ function getquestions(id,answer) {
     }
 
 function getevents(catID) {
+    categoryIDVM(catID);
     if (catID == 19){
             urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/allevents";
             }
