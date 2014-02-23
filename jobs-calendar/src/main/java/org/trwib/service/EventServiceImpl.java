@@ -31,7 +31,9 @@ public class EventServiceImpl implements EventService {
     @Override
 	public List<SimpleEvent> getEventsByCategory(Long categoryId, int page, int size) {
     	TypedQuery<SimpleEvent> query = 
-        		em.createQuery("SELECT e FROM SimpleEvent e join e.eventCategories cats WHERE cats.id = :categoryId", 
+        		em.createQuery("SELECT e FROM SimpleEvent e join e.eventCategories cats "
+        				+ "WHERE cats.id = :categoryId AND e.startDt >= current_date() "
+        				+ "ORDER BY e.startDt ASC", 
         				SimpleEvent.class);
         query.setParameter("categoryId", categoryId);
         query.setFirstResult(page * size);
@@ -42,7 +44,8 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public List<SimpleEvent> getAllEvents(int page, int size) {
     	TypedQuery<SimpleEvent> query = 
-        		em.createQuery("SELECT e FROM SimpleEvent e", SimpleEvent.class);
+        		em.createQuery("SELECT e FROM SimpleEvent e WHERE e.startDt >= current_date() "
+        				+ "ORDER BY e.startDt ASC", SimpleEvent.class);
         query.setFirstResult(page * size);
         query.setMaxResults(size);
         return query.getResultList();
