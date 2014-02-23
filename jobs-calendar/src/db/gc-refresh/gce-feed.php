@@ -3,7 +3,7 @@ class GCE_Feed{
 	private $feed_id = 1;
 	private $feed_title = '';
 	private $feed_url = 'http://www.google.com/calendar/feeds/pittsburghworks%40gmail.com/public/basic';
-	private $max_events = 2145916800;
+	private $max_events = 250;
 	private $cache_duration = 43200;
 	private $date_format = '';
 	private $time_format = '';
@@ -69,7 +69,7 @@ class GCE_Feed{
 		$path = substr( $url_parts['path'], 0, strrpos( $url_parts['path'], '/' ) ) . '/full-noattendees';
 
 		//Add the default parameters to the querystring (retrieving JSON, not XML)
-		$query = '?alt=json&singleevents=true&sortorder=ascending&orderby=starttime';
+		$query = '?alt=json&singleevents=true&sortorder=descending&orderby=starttime';
 
 		//Append the feed specific parameters to the querystring
 

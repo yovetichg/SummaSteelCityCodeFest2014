@@ -20,16 +20,6 @@ CREATE TABLE `question` (
   CONSTRAINT `question_ibfk_3` FOREIGN KEY (`no_id`) REFERENCES `question_response` (`id`) ON DELETE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `event` (
-  `event_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(5000) DEFAULT NULL,
-  `start_dt` datetime DEFAULT NULL,
-  `end_dt` datetime DEFAULT NULL,
-  `location` varchar(1000) DEFAULT NULL,
-  `description` varchar(5000) DEFAULT NULL,
-  PRIMARY KEY (`event_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4791 DEFAULT CHARSET=latin1;
-
 CREATE TABLE `event_category` (
   `question_response_id` int(11) NOT NULL,
   `description` varchar(500) DEFAULT NULL,
@@ -38,19 +28,8 @@ CREATE TABLE `event_category` (
   CONSTRAINT `event_category_ibfk_1` FOREIGN KEY (`question_response_id`) REFERENCES `question_response` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `event_category_association` (
-  `event_category_association_id` int(11) NOT NULL AUTO_INCREMENT,
-  `event_category_id` int(11) DEFAULT NULL,
-  `event_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`event_category_association_id`),
-  KEY `event_id_idx` (`event_id`),
-  KEY `event_category_id_idx` (`event_category_id`),
-  CONSTRAINT `event_id` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `event_category_id` FOREIGN KEY (`event_category_id`) REFERENCES `event_category` (`question_response_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 CREATE TABLE `provider` (
-  `Id` int(11) NOT NULL,
+  `provider_id` int(11) NOT NULL,
   `name` varchar(60) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `address_1` varchar(45) NOT NULL,
@@ -64,6 +43,30 @@ CREATE TABLE `provider` (
   `job_retention` bit(1) DEFAULT b'0',
   `support_services` bit(1) DEFAULT b'0',
   `programs` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `Id_UNIQUE` (`Id`)
+  PRIMARY KEY (`provider_id`),
+  UNIQUE KEY `provider_id_UNIQUE` (`provider_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `event` (
+  `event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(5000) DEFAULT NULL,
+  `start_dt` datetime DEFAULT NULL,
+  `end_dt` datetime DEFAULT NULL,
+  `location` varchar(1000) DEFAULT NULL,
+  `description` varchar(5000) DEFAULT NULL,
+  `provider_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`event_id`),
+  KEY `provider_id_idx` (`provider_id`),
+  CONSTRAINT `provider_id` FOREIGN KEY (`provider_id`) REFERENCES `provider` (`provider_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4791 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `event_category_association` (
+  `event_category_association_id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_category_id` int(11) DEFAULT NULL,
+  `event_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`event_category_association_id`),
+  KEY `event_id_idx` (`event_id`),
+  KEY `event_category_id_idx` (`event_category_id`),
+  CONSTRAINT `event_id` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `event_category_id` FOREIGN KEY (`event_category_id`) REFERENCES `event_category` (`question_response_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -18,7 +18,7 @@
 
 	$mysql_server = "localhost";
 	$mysql_user = "root";
-	$mysql_pw = "";
+	$mysql_pw = "summarocks";
 	$mysql_db = "codefest";
 
 	$conn = mysql_connect($mysql_server, $mysql_user, $mysql_pw);
@@ -37,12 +37,28 @@
 
 	echo "Adding events...";
 	foreach ($events as $event) {
-		$result = mysql_query("INSERT INTO event (name, start_dt, end_dt, location, description) 
-			VALUES ('$event->title','$event->start_time','$event->start_time','$event->location','$event->location')");
+		$provider_id = rand(10001,10084);
+
+		$result = mysql_query("INSERT INTO event (name, start_dt, end_dt, location, description, provider_id) 
+			VALUES ('$event->title','$event->start_time','$event->start_time','$event->location','$event->location', $provider_id)");
+
 
 		if (!$result) {
-			echo mysql_error()."<br />";
+			echo "event: ".mysql_error()."<br />";
 		}
+		else {
+			$event_id = mysql_insert_id();
+			$category_id = rand(10,19);
+
+			$result = mysql_query("INSERT INTO event_category_association (event_id, event_category_id) VALUES ($event_id, $category_id)");
+			if (!$result) {
+				echo "event_category_assocation: ".mysql_error()."<br />";
+			}
+		}
+		
+
+		//echo $event->start_time;
+
 	}
 
 	mysql_close($conn);
