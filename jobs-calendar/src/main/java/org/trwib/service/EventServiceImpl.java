@@ -59,4 +59,9 @@ public class EventServiceImpl implements EventService {
         return returnedEvent.getEventId();
     }
 
+	@Override
+	public FullEvent getEventDetail(int eventId) {
+		return eventRepository.findOne(eventId);
+	}
+
 }

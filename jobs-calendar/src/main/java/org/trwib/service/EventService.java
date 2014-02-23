@@ -38,4 +38,10 @@ public interface EventService {
      * @return ID of the newly created event
      */
     Integer create(FullEvent event);
+
+	/**
+	 * @param eventId
+	 * @return
+	 */
+	FullEvent getEventDetail(int eventId);
 }
