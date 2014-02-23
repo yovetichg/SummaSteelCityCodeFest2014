@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.trwib.dto.EventsDto;
 import org.trwib.model.EventCategory;
+import org.trwib.model.FullEvent;
 import org.trwib.model.SimpleEvent;
 import org.trwib.service.EventService;
 
@@ -48,6 +49,15 @@ public class EventController {
         return new JSONPObject(callback, new EventsDto(list, page, size));
     }
     
+    @ResponseBody
+    @RequestMapping(value = "/eventDetail/{eventId}", method = RequestMethod.GET, produces="application/json")
+    public JSONPObject getEventDetail(@PathVariable("eventId") final Integer eventId,
+    					@RequestParam(value="callback") final String callback) {
+        LOGGER.debug("Getting event by ID {}", eventId);
+        FullEvent event = eventService.getEventDetail(eventId);
+        return new JSONPObject(callback, event);
+    }
+
     @ResponseBody
     @RequestMapping(value = "/categories", method = RequestMethod.GET, produces="application/json")
     public JSONPObject getCategories(@RequestParam("callback") final String callback) {
