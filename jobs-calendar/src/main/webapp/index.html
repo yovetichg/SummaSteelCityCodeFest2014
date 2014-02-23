@@ -75,7 +75,29 @@
             <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
             <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1> 
          </header>
-        <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
+        <div data-display="overlay" data-role="panel" id="menu" data-theme="b">            
+            <ul data-role="listview">
+              <li><a href="#">View All Events</a></li>
+              <li><a href="#page1">Start Over</a></li>
+              <li data-role="collapsible" data-iconpos="right" data-inset="false">
+                <h2>View By Category</h2>
+                <ul data-role="listview" data-theme="b">
+                  <li><a href="#">Interest Assessment</a></li>
+                  <li><a href="#">Resume Workshops</a></li>
+                  <li><a href="#">Interview Workshops</a></li>
+                  <li><a href="#">Hiring/Recruitment</a></li>
+                  <li><a href="#">Interest Assessment</a></li>
+                  <li><a href="#">Networking/Job Clubs</a></li>
+                  <li><a href="#">Computer Workshops</a></li>
+                  <li><a href="#">Short-Term Training</a></li>
+                  <li><a href="#">Soft Skills Workshops</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#contact">Contact</a></li>
+                <li data-icon="arrow-l"><a href="#menuBtn" data-rel="close">Close</a></li>
+            </ul>
+        </div>
          <section class="ui-content" role="main">
               <ul id="list-events" data-role="listview" >
                   <li data-role="list-divider" role="heading">Resume Workshops</li>
@@ -99,6 +121,50 @@
               </ul>  
          </section>
      </div>
+        
+    <div data-role="page" id="detail" data-theme="a" >
+         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
+            <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
+            <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
+            <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1> 
+         </header>
+        <div data-display="overlay" data-role="panel" id="menu" data-theme="b">            
+            <ul data-role="listview">
+              <li><a href="#">View All Events</a></li>
+              <li><a href="#page1">Start Over</a></li>
+              <li data-role="collapsible" data-iconpos="right" data-inset="false">
+                <h2>View By Category</h2>
+                <ul data-role="listview" data-theme="b">
+                  <li><a href="#">Interest Assessment</a></li>
+                  <li><a href="#">Resume Workshops</a></li>
+                  <li><a href="#">Interview Workshops</a></li>
+                  <li><a href="#">Hiring/Recruitment</a></li>
+                  <li><a href="#">Interest Assessment</a></li>
+                  <li><a href="#">Networking/Job Clubs</a></li>
+                  <li><a href="#">Computer Workshops</a></li>
+                  <li><a href="#">Short-Term Training</a></li>
+                  <li><a href="#">Soft Skills Workshops</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#contact">Contact</a></li>
+                <li data-icon="arrow-l"><a href="#menuBtn" data-rel="close">Close</a></li>
+            </ul>
+        </div>
+        <section class="ui-content">
+            <h2 class="ui-header ui-bar-inherit" >Recruiting for Pickers &amp; Packers</h2>
+            <div>
+                <span>3/2/14</span> - <span>3/3/14</span>
+            </div>
+            <div><a href="#map_canvas" onclick="FindEventOnMap('PA Careerlink Downtown Pittsburgh');">PA Careerlink Downtown Pittsburgh</a></div>
+        </section>
+        <section class="ui-content">
+            <div>When: Mon Mar 4, 2013 9:30am to 11am&nbsp; EST<br> <br>Where: CareerLink <br>Event Status: confirmed</div>
+        </section>
+        <section class="ui-content">
+            <div><a href="tel:7243096355">724.309.6355</a></div>
+        </section>
+    </div>
 
     <div data-role="page" id="map_canvas">
 
