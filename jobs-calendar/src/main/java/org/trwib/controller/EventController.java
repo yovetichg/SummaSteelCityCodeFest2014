@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,5 +31,13 @@ public class EventController {
         LOGGER.debug("Getting all events");
         List<Event> list = eventService.getEventsByCategory(0L, 1, 20);
         return new JSONPObject(callback, new EventsDto(list, 1, 20));
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/events", method = RequestMethod.POST, produces="application/json")
+    public JSONPObject createEvent(@RequestParam("callback") final String callback,
+                                   @RequestBody(required = true) Event event) {
+        LOGGER.debug("Creating event [{}]", event);
+        return new JSONPObject(callback, eventService.create(event));
     }
  }

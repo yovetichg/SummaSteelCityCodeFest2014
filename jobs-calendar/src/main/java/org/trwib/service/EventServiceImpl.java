@@ -21,4 +21,10 @@ public class EventServiceImpl implements EventService {
 		return eventRepository.findAll();
 	}
 
+    @Override
+    public Integer create(Event event) {
+        Event returnedEvent = eventRepository.saveAndFlush(event);
+        return returnedEvent.getEventId();
+    }
+
 }
