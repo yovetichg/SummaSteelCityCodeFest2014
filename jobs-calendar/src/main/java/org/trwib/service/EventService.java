@@ -1,9 +1,8 @@
 package org.trwib.service;
 
-import java.util.List;
-
 import org.trwib.model.Event;
 import org.trwib.model.EventCategory;
+import java.util.List;
 
 public interface EventService {
 
@@ -29,4 +28,11 @@ public interface EventService {
 	 * @return list of all categories
 	 */
 	List<EventCategory> getAllCategories();
+
+	/**
+     * Create a new event
+     * @param event
+     * @return ID of the newly created event
+     */
+    Integer create(Event event);
 }

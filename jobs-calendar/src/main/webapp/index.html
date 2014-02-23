@@ -53,13 +53,17 @@
             </ul>
         </div>
         <section class="ui-content" role="main">
-            <h1>Are you looking for a job?</h1>
-            <table width="100%">
-                <tr>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">Yes</button></td>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">No</button></td>
-                </tr>
-            </table>            
+            <section class="ui-content">
+                <h1>Are you looking for a job?</h1>
+            </section>
+            <section class="ui-content">
+                <table width="100%">
+                    <tr>
+                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">Yes</button></td>
+                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">No</button></td>
+                    </tr>
+                </table>  
+            </section>          
         </section>
     </div>
     
@@ -71,13 +75,18 @@
          </header>
         <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
         <section class="ui-content" role="main">
-            <h1>Do you have a goal occupation?</h1>
-            <table width="100%">
-                <tr>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page3')">Yes</button></td>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page3')">No</button></td>
-                </tr>
-            </table>
+            
+            <section class="ui-content">
+                <h1>Do you have a goal occupation?</h1>
+            </section>
+            <section class="ui-content">
+                <table width="100%">
+                    <tr>
+                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page3')">Yes</button></td>
+                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page3')">No</button></td>
+                    </tr>
+                </table>
+            </section>
         </section>
     </div>
 
@@ -89,13 +98,17 @@
          </header>
         <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
         <section class="ui-content" role="main">
-            <h1>Do you have an accurate and up to date resume?</h1>
-            <table width="100%">
-                <tr>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">Yes</button></td>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">No</button></td>
-                </tr>
-            </table>
+            <section class="ui-content">
+                <h1>Do you have an accurate and up to date resume?</h1>
+            </section>
+            <section class="ui-content">
+                <table width="100%">
+                    <tr>
+                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">Yes</button></td>
+                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">No</button></td>
+                    </tr>
+                </table>
+            </section>
         </section>
     </div>
         
@@ -111,7 +124,7 @@
                   <li data-role="list-divider" role="heading">Resume Workshops</li>
                   <!-- ko foreach: eventsTEST -->
                   <li>
-                      <a href="#map_canvas">
+                      <a href="#map_canvas" onclick="FindEventOnMap()">
                         <div data-bind="text: name"></div>
                         <div data-bind="text: startDate"></div>
                       </a>
@@ -129,7 +142,11 @@
               </ul>  
          </section>
      </div>
-        
+
+    <div data-role="page" id="map_canvas">
+
+    </div>
+    
     <div data-role="page" id="contact" data-theme="a">
         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
             <a id="menuBtn" class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
@@ -150,7 +167,7 @@
             </section>
         </section>
     </div>
-    
+
     <div data-role="page" id="question">
         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar-a" role="nav-bar">
             <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
@@ -176,6 +193,8 @@
         <script type="text/javascript" src="static/js/lib/jquery.mobile-1.4.1.js"></script>
         <script type="text/javascript" src="static/js/app/vm.js?123456789"></script>
         <script type="text/javascript" src="static/js/app/app.js?123456789"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script type="text/javascript" src="static/js/app/map.js"></script>
       
      </body>
      
