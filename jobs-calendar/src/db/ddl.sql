@@ -25,6 +25,7 @@ CREATE TABLE `question` (
 CREATE TABLE `event_category` (
   `question_response_id` int(11) NOT NULL,
   `description` varchar(500) DEFAULT NULL,
+  `transition_text` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`question_response_id`),
   KEY `question_response_idx` (`question_response_id`),
   CONSTRAINT `event_category_ibfk_1` FOREIGN KEY (`question_response_id`) REFERENCES `question_response` (`id`) ON DELETE CASCADE
