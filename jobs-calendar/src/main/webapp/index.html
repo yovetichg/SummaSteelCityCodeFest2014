@@ -83,25 +83,25 @@
         
      <div data-role="page" id="EventList" data-theme="a" >
         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
-            <a id="menuBtn2" class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu2"></a>
+            <a id="menuBtn1" class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu1"></a>
             <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
             <h1 data-icon="bars" class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
          </header>
-        <div data-display="overlay" data-role="panel" id="menu2" data-theme="b">            
+        <div data-display="overlay" data-role="panel" id="menu1" data-theme="b">            
             <ul data-role="listview">
-              <li><a href="#">View All Events</a></li>
+              <li><a href="" data-bind="click: function(){getevents(19)}">View All Events</a></li>
               <li><a href="#page1">Start Over</a></li>
               <li data-role="collapsible" data-iconpos="right" data-inset="false">
                 <h2>View By Category</h2>
                 <ul data-role="listview" data-theme="b">
                   <!-- ko foreach: categories -->
-                  <li><a href="#"><span data-bind="text:description"></span></a></li>
+                  <li><a href="#" data-bind="click: function(){getevents($data.id)}"><span data-bind="text:description"></span></a></li>
                 <!-- /ko -->
                 </ul>
               </li>
               <li><a href="#">Help</a></li>
               <li><a href="#contact">Contact</a></li>
-                <li data-icon="arrow-l"><a href="#menuBtn2" data-rel="close">Close</a></li>
+                <li data-icon="arrow-l"><a href="#menuBtn1" data-rel="close">Close</a></li>
             </ul>
         </div>
          <section class="ui-content" role="main">
@@ -122,25 +122,25 @@
         
     <div data-role="page" id="detail" data-theme="a" >
         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
-            <a id="menuBtn3" class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu3"></a>
+            <a id="menuBtn1" class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu1"></a>
             <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
             <h1 data-icon="bars" class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
          </header>
-        <div data-display="overlay" data-role="panel" id="menu3" data-theme="b">            
+        <div data-display="overlay" data-role="panel" id="menu1" data-theme="b">            
             <ul data-role="listview">
-              <li><a href="#">View All Events</a></li>
+              <li><a href="" data-bind="click: function(){getevents(19)}">View All Events</a></li>
               <li><a href="#page1">Start Over</a></li>
               <li data-role="collapsible" data-iconpos="right" data-inset="false">
                 <h2>View By Category</h2>
                 <ul data-role="listview" data-theme="b">
                   <!-- ko foreach: categories -->
-                  <li><a href="#"><span data-bind="text:description"></span></a></li>
+                  <li><a href="#" data-bind="click: function(){getevents($data.id)}"><span data-bind="text:description"></span></a></li>
                 <!-- /ko -->
                 </ul>
               </li>
               <li><a href="#">Help</a></li>
               <li><a href="#contact">Contact</a></li>
-                <li data-icon="arrow-l"><a href="#menuBtn3" data-rel="close">Close</a></li>
+                <li data-icon="arrow-l"><a href="#menuBtn1" data-rel="close">Close</a></li>
             </ul>
         </div>
         <section class="ui-content">
@@ -157,34 +157,29 @@
         <section class="ui-content">
             <div><a href="" data-bind="attr: {href: 'tel:' + eventDetail.providerphone()}"><span data-bind="text:eventDetail.providerphone"></span></a></div>
         </section>
-        <!-- ko foreach: eventDetail.eventCategories -->
-        <section class="ui-content">
-            <div data-bind="text:description"></div>
-        </section>
-         <!-- /ko -->
     </div>
         
             <div data-role="page" id="contact" data-theme="a">
-       <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
-            <a id="menuBtn5" class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu5"></a>
+        <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
+            <a id="menuBtn1" class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu1"></a>
             <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
             <h1 data-icon="bars" class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
          </header>
-        <div data-display="overlay" data-role="panel" id="menu5" data-theme="b">            
+        <div data-display="overlay" data-role="panel" id="menu1" data-theme="b">            
             <ul data-role="listview">
-              <li><a href="#">View All Events</a></li>
+              <li><a href="" data-bind="click: function(){getevents(19)}">View All Events</a></li>
               <li><a href="#page1">Start Over</a></li>
               <li data-role="collapsible" data-iconpos="right" data-inset="false">
                 <h2>View By Category</h2>
                 <ul data-role="listview" data-theme="b">
                   <!-- ko foreach: categories -->
-                  <li><a href="#"><span data-bind="text:description"></span></a></li>
+                  <li><a href="#" data-bind="click: function(){getevents($data.id)}"><span data-bind="text:description"></span></a></li>
                 <!-- /ko -->
                 </ul>
               </li>
               <li><a href="#">Help</a></li>
               <li><a href="#contact">Contact</a></li>
-                <li data-icon="arrow-l"><a href="#menuBtn5" data-rel="close">Close</a></li>
+                <li data-icon="arrow-l"><a href="#menuBtn1" data-rel="close">Close</a></li>
             </ul>
         </div>
         <section class="ui-content" role="main">
@@ -204,25 +199,25 @@
 
     <div data-role="page" id="google_map">
         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
-            <a id="menuBtn4" class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu4"></a>
+            <a id="menuBtn1" class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu1"></a>
             <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
             <h1 data-icon="bars" class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
          </header>
-        <div data-display="overlay" data-role="panel" id="menu4" data-theme="b">            
+        <div data-display="overlay" data-role="panel" id="menu1" data-theme="b">            
             <ul data-role="listview">
-              <li><a href="#">View All Events</a></li>
+              <li><a href="" data-bind="click: function(){getevents(19)}">View All Events</a></li>
               <li><a href="#page1">Start Over</a></li>
               <li data-role="collapsible" data-iconpos="right" data-inset="false">
                 <h2>View By Category</h2>
                 <ul data-role="listview" data-theme="b">
                   <!-- ko foreach: categories -->
-                  <li><a href="#"><span data-bind="text:description"></span></a></li>
+                  <li><a href="#" data-bind="click: function(){getevents($data.id)}"><span data-bind="text:description"></span></a></li>
                 <!-- /ko -->
                 </ul>
               </li>
               <li><a href="#">Help</a></li>
               <li><a href="#contact">Contact</a></li>
-                <li data-icon="arrow-l"><a href="#menuBtn4" data-rel="close">Close</a></li>
+                <li data-icon="arrow-l"><a href="#menuBtn1" data-rel="close">Close</a></li>
             </ul>
         </div>
         <div class="ui-content" id="map_canvas"></div>
