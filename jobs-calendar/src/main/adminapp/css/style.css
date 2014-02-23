@@ -1,9 +1,10 @@
 #entry-form {
 	max-width: 800px;
+	display: none;
 }
 
 #event-list {
-	display: none;
+	/*display: none;*/
 }
 
 #description {

@@ -138,36 +138,17 @@
             </ul>
         </div>
         <section class="ui-content">
-            <h2 class="ui-header ui-bar-inherit" >Recruiting for Pickers &amp; Packers</h2>
+            <h2 class="ui-header ui-bar-inherit" data-bind="text: eventDetail.name"></h2>
             <div>
-                <span>3/2/14</span> - <span>3/3/14</span>
+                <span data-bind="dateepoch: eventDetail.startDt"></span> - <span data-bind="dateepoch: eventDetail.endDt"></span>
             </div>
-            <div><a href="#map_canvas" onclick="FindEventOnMap('PA Careerlink Downtown Pittsburgh');">PA Careerlink Downtown Pittsburgh</a></div>
-        </section>
-        <section class="ui-content">
-            <div>When: Mon Mar 4, 2013 9:30am to 11am&nbsp; EST<br> <br>Where: CareerLink <br>Event Status: confirmed</div>
-        </section>
-        <section class="ui-content">
-            <div><a href="tel:7243096355">724.309.6355</a></div>
-        </section>
-        
-        <section class="ui-content">
-            <div data-bind="text: eventDetail.eventId"></div>
-        </section>
-        <section class="ui-content">
-            <div data-bind="dateepoch: eventDetail.startDt"></div>
-        </section>
-        <section class="ui-content">
-            <div data-bind="dateepoch: eventDetail.endDt"></div>
-        </section>
-        <section class="ui-content">
-            <div data-bind="text: eventDetail.name"></div>
+            <div><a href="#map_canvas" onclick="FindEventOnMap('PA Careerlink Downtown Pittsburgh');" data-bind="text: eventDetail.location"></a></div>
         </section>
         <section class="ui-content">
             <div data-bind="text: eventDetail.description"></div>
         </section>
         <section class="ui-content">
-            <div data-bind="text: eventDetail.location"></div>
+            <div><a href="tel:7243096355" data-bind="text:eventDetail.providerphone"></a></div>
         </section>
         <!-- ko foreach: eventDetail.eventCategories -->
         <section class="ui-content">
@@ -177,12 +158,6 @@
             <div data-bind="text:id"></div>
         </section>
          <!-- /ko -->
-        <section class="ui-content">
-            <div data-bind="text:eventDetail.provideraddress1"></div>
-        </section>
-        <section class="ui-content">
-            <div data-bind="text:eventDetail.providerzip"></div>
-        </section>
     </div>
 
     <div data-role="page" id="map_canvas">
