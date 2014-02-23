@@ -14,6 +14,7 @@ import javax.persistence.Table;
  * Entity class representing a Question itself
  * @author bgray
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "question")
 @PrimaryKeyJoinColumn(name="question_response_id")
