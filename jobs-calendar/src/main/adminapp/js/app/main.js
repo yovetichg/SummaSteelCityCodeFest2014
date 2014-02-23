@@ -1,16 +1,24 @@
+var defaultCategoryId = 14;
+
 $(function() {
 
 	$('#nav-add-event').click(function() {
-		$('#entry-form').show();
-		$('#event-list').hide();
+		showEditEvent(true);
 	});
 
 	$('#nav-view-events').click(function() {
-		$('#entry-form').hide();
-		$('#event-list').show();
+		showEventList(defaultCategoryId);
 	});
 
-	showEventList(14);
+
+	$('#nav-category .dropdown-menu').click(function(e){
+		var categoryId = $(e.target).data( "categoryid" );
+		getevents(categoryId);
+	});
+
+	getcategories();
+
+	showEventList(defaultCategoryId);
 });
 
 
@@ -27,12 +35,16 @@ function showEditEvent(addEvent) {
 	else
 		$('#event-mode').html("Edit Event");
 
+	$('#nav-category').hide();
+
 	$('#entry-form').show();
 	$('#event-list').hide();
 }
 
 function showEventList(categoryId) {
 	getevents(categoryId);
+
+	$('#nav-category').show();
 
 	$('#entry-form').hide();
 	$('#event-list').show();
@@ -55,6 +67,8 @@ function getevents(catID) {
 			console.log(data.event);
 
 			var table = $('#event-list tbody');
+
+			table.empty();
 
 			$.each(data.event, function(i, item) {
 
@@ -105,31 +119,41 @@ function getevent(eventId) {
 
 			showEditEvent(false);
 
-/*			$.each(data.event, function(i, item) {
-
-				var html = '<tr>';
-
-				html += '<td><a href="#" data-eventid=' + item.eventId + ' class="edit-event"><img class="media-object pull-left" data-src="holder.js/16x16" src="css/images/edit-icon-16x16.png"></a></td>';
-				html += '<td>' + item.name + '</td>';
-				html += '<td>' + item.location + '</td>';
-				html += '<td>' + utctimecnv(item.startDt) + '</td>';
-				html += '<td>' + utctimecnv(item.endDt) + '</td>';
-				html += '<td>[Category]</td>';
-				html += '</tr>';
-
-				table.append(html);
-
-				$('#entry-form').show();
-				$('#event-list').hide();
-
-			});*/
-
-
 		},
 		error: function(request, status, error) {
 			console.log("Error status " + status);
 		}
 	});
+}
+
+function getcategories() {
+    
+    var request = $.ajax({
+            url:"http://10.93.126.85:8080/jobs-calendar/api/categories",
+            type: 'GET',
+            dataType:'jsonp',
+            jsonpCallback: 'categories',
+            jsonp: 'callback',
+            success: function (data) {
+            console.log("categories call good");
+            console.log(data);
+            
+
+            	var categories = $('#nav-category .dropdown-menu');
+           
+                $.each(data, function (i, item) {         
+
+                	categories.append('<li><a href="#" data-categoryid=' + item.id + '>' + item.description + '</a></li>');
+                    
+                });
+            
+           
+            },
+            error: function (request, status, error) {
+                console.log("Error status " + status); 
+            }
+        });
+    
 }
 
 function utctimecnv(epochtime) {
