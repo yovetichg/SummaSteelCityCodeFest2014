@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="static/css/jquery.mobile.icons.min.css" />
         <link rel="stylesheet" type="text/css" href="static/css/jquery.mobile-1.4.1.min.css" />
         <link rel="stylesheet" type="text/css" href="static/css/jquery.mobile.structure-1.4.1.min.css" />
-        <link rel="stylesheet" type="text/css" href="static/css/pittsburgh-works.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/pittsburgh-dark.css" />
         <link rel="stylesheet" type="text/css" href="static/css/styles.css" />
        
        
@@ -25,11 +25,11 @@
         
     <div data-role="page" id="page1">
         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
-            <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
+            <a id="menuBtn" class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
             <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
             <h1 data-icon="bars" class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
          </header>
-        <div data-display="overlay" data-role="panel" id="menu">
+        <div data-display="overlay" data-role="panel" id="menu" data-theme="b">            
             <ul data-role="listview">
               <li><a href="#">View All Events</a></li>
               <li><a href="#">Start Over</a></li>
@@ -50,6 +50,7 @@
               <li><a href="#">Calendar</a></li>
               <li><a href="#">Help</a></li>
               <li><a href="#">Contact</a></li>
+                <li data-icon="arrow-l"><a href="#menuBtn" data-rel="close">Close</a></li>
             </ul>
         </div>
         <section class="ui-content" role="main">
@@ -66,6 +67,7 @@
     <div data-role="page" id="page2">
         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
             <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
+            <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
             <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
          </header>
         <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
@@ -83,6 +85,7 @@
     <div data-role="page" id="page3">
         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
             <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
+            <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
             <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
          </header>
         <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
@@ -100,6 +103,7 @@
      <div data-role="page" id="EventList" data-theme="a" >
          <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
             <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
+            <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
             <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1> 
          </header>
         <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
