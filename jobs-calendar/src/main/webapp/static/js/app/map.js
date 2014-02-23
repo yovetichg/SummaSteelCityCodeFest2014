@@ -34,5 +34,8 @@ function FindEventOnMap(address) {
             }
         });
     }
+    
+    #map_canvas
+     $.mobile.changePage("#map_canvas", { transition: "slide"});
     return true;
 }
