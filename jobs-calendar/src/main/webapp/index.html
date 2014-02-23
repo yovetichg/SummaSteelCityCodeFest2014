@@ -139,23 +139,21 @@
         </div>
         <section class="ui-content">
             <h2 class="ui-header ui-bar-inherit" data-bind="text: eventDetail.name"></h2>
+            <a class="ui-btn">Add To Calendar</a>
             <div>
                 <span data-bind="dateepoch: eventDetail.startDt"></span> - <span data-bind="dateepoch: eventDetail.endDt"></span>
             </div>
-            <div><a href="#map_canvas" onclick="FindEventOnMap('PA Careerlink Downtown Pittsburgh');" data-bind="text: eventDetail.location"></a></div>
+            <div><a href="" data-bind="click: function() {FindEventOnMap(eventDetail.location())}"><span data-bind="text: eventDetail.location"></span></a></div>
         </section>
         <section class="ui-content">
             <div data-bind="text: eventDetail.description"></div>
         </section>
         <section class="ui-content">
-            <div><a href="tel:7243096355" data-bind="text:eventDetail.providerphone"></a></div>
+            <div><a href="" data-bind="attr: {href: 'tel:' + eventDetail.providerphone()}"><span data-bind="text:eventDetail.providerphone"></span></a></div>
         </section>
         <!-- ko foreach: eventDetail.eventCategories -->
         <section class="ui-content">
             <div data-bind="text:description"></div>
-        </section>
-        <section class="ui-content">
-            <div data-bind="text:id"></div>
         </section>
          <!-- /ko -->
     </div>
