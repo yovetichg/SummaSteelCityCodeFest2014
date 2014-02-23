@@ -13,6 +13,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -33,6 +34,7 @@ import java.util.Properties;
 @ComponentScan(basePackages = {"org.trwib"})
 @ImportResource("classpath:applicationContext.xml")
 @PropertySource("classpath:application.properties")
+@EnableWebMvc
 public class ApplicationContext {
 
     private static final String VIEW_RESOLVER_PREFIX = "/WEB-INF/jsp/";
