@@ -1,12 +1,15 @@
 package org.trwib.dto;
 
+import java.io.Serializable;
 import java.util.List;
+
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import org.trwib.model.Event;
 
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-public class EventsDto {
+@SuppressWarnings("serial")
+@JsonSerialize()
+public class EventsDto  implements Serializable {
 	private List<Event> events;
 	private int page;
 	private int size;
