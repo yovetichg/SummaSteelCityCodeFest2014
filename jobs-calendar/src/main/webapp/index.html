@@ -2,6 +2,12 @@
     <head>
         <meta charset="utf-8">
 	   <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        
+        <link rel="apple-touch-icon" href="static/img/touch-icon-iphone-60x60-precomposed.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="static/img/touch-icon-ipad-76x76-precomposed.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="static/img/touch-icon-iphone-retina-120x120-precomposed.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="static/img/touch-icon-ipad-retina-152x152-precomposed.png">
         
         <link rel="stylesheet" type="text/css" href="static/css/jquery.mobile.icons.min.css" />
         <link rel="stylesheet" type="text/css" href="static/css/jquery.mobile-1.4.1.min.css" />
@@ -18,9 +24,34 @@
     <!------------------------------- Page 1 ------------------------------------>
         
     <div data-role="page" id="page1">
-        <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar-a" role="nav-bar">
-            <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
+        <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
+            <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
+            <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
+            <h1 data-icon="bars" class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
          </header>
+        <div data-display="overlay" data-role="panel" id="menu">
+            <ul data-role="listview">
+              <li><a href="#">View All Events</a></li>
+              <li><a href="#">Start Over</a></li>
+              <li data-role="collapsible" data-iconpos="right" data-inset="false">
+                <h2>View By Category</h2>
+                <ul data-role="listview" data-theme="b">
+                  <li><a href="#">Interest Assessment</a></li>
+                  <li><a href="#">Resume Workshops</a></li>
+                  <li><a href="#">Interview Workshops</a></li>
+                  <li><a href="#">Hiring/Recruitment</a></li>
+                  <li><a href="#">Interest Assessment</a></li>
+                  <li><a href="#">Networking/Job Clubs</a></li>
+                  <li><a href="#">Computer Workshops</a></li>
+                  <li><a href="#">Short-Term Training</a></li>
+                  <li><a href="#">Soft Skills Workshops</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Calendar</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
         <section class="ui-content" role="main">
             <h1>Are you looking for a job?</h1>
             <table width="100%">
@@ -33,9 +64,11 @@
     </div>
     
     <div data-role="page" id="page2">
-        <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar-a" role="nav-bar">
+        <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
+            <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
             <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
          </header>
+        <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
         <section class="ui-content" role="main">
             <h1>Do you have a goal occupation?</h1>
             <table width="100%">
@@ -48,9 +81,11 @@
     </div>
 
     <div data-role="page" id="page3">
-        <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar-a" role="nav-bar">
+        <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
+            <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
             <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
          </header>
+        <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
         <section class="ui-content" role="main">
             <h1>Do you have an accurate and up to date resume?</h1>
             <table width="100%">
@@ -63,9 +98,11 @@
     </div>
         
      <div data-role="page" id="EventList" data-theme="a" >
-         <header data-id="foo1" data-position="fixed" class="ui-header ui-bar-a" role="nav-bar">
+         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
+            <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
             <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1> 
          </header>
+        <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
          <section class="ui-content" role="main">
               <ul id="list-events" data-role="listview" >
                   <li data-role="list-divider" role="heading">Resume Workshops</li>
@@ -92,7 +129,22 @@
 
                 
      </div>
-        
+    
+    <div data-role="page" id="question">
+        <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar-a" role="nav-bar">
+            <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
+         </header>
+        <section class="ui-content" role="main">
+            
+            <h1>Do you have an accurate and up to date resume?</h1>
+            <table width="100%">
+                <tr>
+                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">Yes</button></td>
+                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">No</button></td>
+                </tr>
+            </table>
+        </section>
+    </div>
         
     
 

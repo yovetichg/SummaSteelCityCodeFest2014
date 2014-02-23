@@ -11,11 +11,6 @@ var testeventsVM = {
 
 var questionsVM = ko.observableArray([]);
 
-
-
-
-
-
 var eventsVM = ko.observableArray([]);
 
 var eventslistTestVM = ko.observableArray([
@@ -60,11 +55,12 @@ ko.applyBindings(new viewModel());
 var vm = new viewModel();
     
 
-function getquestions() {
+function getquestions(question) {
     var request = $.ajax({
             url:"http://10.93.126.85:8080/TRWIB/restful/getquestions",
             type: 'GET',
             dataType:'jsonp',
+            data: question,
             jsonpCallback: 'questions',
             jsonp: 'wrapper',
             success: function (data) {
