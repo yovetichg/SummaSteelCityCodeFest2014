@@ -346,18 +346,22 @@ function FindEventOnMap(address) {
 function save2cal() {
     
     
-    msgData1 = Date(eventDetailVM.startDt());
-    msgData2 = Date(eventDetailVM.endDt());
+    msgData1 = new Date(eventDetailVM.startDt());
+    msgData2 = new Date(eventDetailVM.endDt());
    
     
     msgData3 = eventDetailVM.location();
     
-   var icsMSG = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Our Company//NONSGML v1.0//EN\nBEGIN:VEVENT\nUID:me@google.com\nDTSTAMP:20120315T170000Z\nATTENDEE;CN=My Self ;RSVP=TRUE:MAILTO:me@gmail.com\nORGANIZER;CN=Me:MAILTO::me@gmail.com\nDTSTART:" + msgData1 +"\nDTEND:" + msgData2 +"\nLOCATION:test location\nSUMMARY:Our Meeting Office\nEND:VEVENT\nEND:VCALENDAR";
-    i
+   var icsMSG = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Our Company//NONSGML v1.0//EN\nBEGIN:VEVENT\nUID:me@google.com\nDTSTAMP:20120315T170000Z\nATTENDEE;CN=My Self ;RSVP=TRUE:MAILTO:me@gmail.com\nORGANIZER;CN=Me:MAILTO::me@gmail.com\nDTSTART:" + ISODateString(msgData1) +"\nDTEND:" + ISODateString(msgData2) +"\nLOCATION:test location\nSUMMARY:Our Meeting Office\nEND:VEVENT\nEND:VCALENDAR";
+   
     
     window.open( "data:text/calendar;charset=utf8," + escape(icsMSG));
     
 }
+
+function ISODateString(d){
+ function pad(n){return n<10 ? '0'+n : n}
+ return d.getFullYear() + pad(d.getUTCMonth()+1) + pad(d.getUTCDate())+'T'+ pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + pad(d.getUTCSeconds())+'Z'}
    
 
     
