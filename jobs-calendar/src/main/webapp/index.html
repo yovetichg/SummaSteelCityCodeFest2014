@@ -36,15 +36,9 @@
               <li data-role="collapsible" data-iconpos="right" data-inset="false">
                 <h2>View By Category</h2>
                 <ul data-role="listview" data-theme="b">
-                  <li><a href="#">Interest Assessment</a></li>
-                  <li><a href="#">Resume Workshops</a></li>
-                  <li><a href="#">Interview Workshops</a></li>
-                  <li><a href="#">Hiring/Recruitment</a></li>
-                  <li><a href="#">Interest Assessment</a></li>
-                  <li><a href="#">Networking/Job Clubs</a></li>
-                  <li><a href="#">Computer Workshops</a></li>
-                  <li><a href="#">Short-Term Training</a></li>
-                  <li><a href="#">Soft Skills Workshops</a></li>
+                  <!-- ko foreach: categories -->
+                  <li><a href="#"><span data-bind="text:description"></span></a></li>
+                <!-- /ko -->
                 </ul>
               </li>
               <li><a href="#">Help</a></li>
@@ -82,15 +76,9 @@
               <li data-role="collapsible" data-iconpos="right" data-inset="false">
                 <h2>View By Category</h2>
                 <ul data-role="listview" data-theme="b">
-                  <li><a href="#">Interest Assessment</a></li>
-                  <li><a href="#">Resume Workshops</a></li>
-                  <li><a href="#">Interview Workshops</a></li>
-                  <li><a href="#">Hiring/Recruitment</a></li>
-                  <li><a href="#">Interest Assessment</a></li>
-                  <li><a href="#">Networking/Job Clubs</a></li>
-                  <li><a href="#">Computer Workshops</a></li>
-                  <li><a href="#">Short-Term Training</a></li>
-                  <li><a href="#">Soft Skills Workshops</a></li>
+                  <!-- ko foreach: categories -->
+                  <li><a href="#"><span data-bind="text:description"></span></a></li>
+                    <!-- /ko -->
                 </ul>
               </li>
               <li><a href="#">Help</a></li>
@@ -103,9 +91,10 @@
                   <li data-role="list-divider" role="heading">Resume Workshops</li>
                   <!-- ko foreach: events -->
                   <li>
+                        <a href="" data-role="button" data-bind="click: function() {eventDetail($data.eventId)}">
                         <div data-bind="text: name"></div>
                         <div data-bind="dateepoch: startDt"></div>
-                     
+                        </a>
                   </li>
                   <!-- /ko -->
                   
@@ -126,15 +115,9 @@
               <li data-role="collapsible" data-iconpos="right" data-inset="false">
                 <h2>View By Category</h2>
                 <ul data-role="listview" data-theme="b">
-                  <li><a href="#">Interest Assessment</a></li>
-                  <li><a href="#">Resume Workshops</a></li>
-                  <li><a href="#">Interview Workshops</a></li>
-                  <li><a href="#">Hiring/Recruitment</a></li>
-                  <li><a href="#">Interest Assessment</a></li>
-                  <li><a href="#">Networking/Job Clubs</a></li>
-                  <li><a href="#">Computer Workshops</a></li>
-                  <li><a href="#">Short-Term Training</a></li>
-                  <li><a href="#">Soft Skills Workshops</a></li>
+                <!-- ko foreach: categories -->
+                  <li><a href="#"><span data-bind="text:description"></span></a></li>
+                <!-- /ko -->
                 </ul>
               </li>
               <li><a href="#">Help</a></li>
@@ -154,6 +137,39 @@
         </section>
         <section class="ui-content">
             <div><a href="tel:7243096355">724.309.6355</a></div>
+        </section>
+        
+        <section class="ui-content">
+            <div data-bind="text: eventDetail.eventId"></div>
+        </section>
+        <section class="ui-content">
+            <div data-bind="dateepoch: eventDetail.startDt"></div>
+        </section>
+        <section class="ui-content">
+            <div data-bind="dateepoch: eventDetail.endDt"></div>
+        </section>
+        <section class="ui-content">
+            <div data-bind="text: eventDetail.name"></div>
+        </section>
+        <section class="ui-content">
+            <div data-bind="text: eventDetail.description"></div>
+        </section>
+        <section class="ui-content">
+            <div data-bind="text: eventDetail.location"></div>
+        </section>
+        <!-- ko foreach: eventDetail.eventCategories -->
+        <section class="ui-content">
+            <div data-bind="text:description"></div>
+        </section>
+        <section class="ui-content">
+            <div data-bind="text:id"></div>
+        </section>
+         <!-- /ko -->
+        <section class="ui-content">
+            <div data-bind="text:eventDetail.provideraddress1"></div>
+        </section>
+        <section class="ui-content">
+            <div data-bind="text:eventDetail.providerzip"></div>
         </section>
     </div>
 

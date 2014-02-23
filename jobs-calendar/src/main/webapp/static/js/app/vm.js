@@ -19,7 +19,36 @@ var questionIDVM = ko.observable("0");
 var categoryVM = ko.observable("Needs");
 var categoryIDVM = ko.observable("19");
 
+var categoriesVM = ko.observableArray([]);
+
 var eventsVM = ko.observableArray([]);
+
+var eventDetailVM ={
+    eventId: ko.observable("0"),
+    startDt: ko.observable("0"),
+    endDt: ko.observable("0"),
+    name: ko.observable("0"),
+    description: ko.observable("0"),
+    location: ko.observable("0"),
+    eventCategories: ko.observableArray([]),
+    provideraddress1: ko.observable("0"),
+    provideraddress2:  ko.observable("0"),
+    providercity:  ko.observable("0"),
+    providerempSupport:  ko.observable("0"),
+    providerid:  ko.observable("0"),
+    providerjobRetention:  ko.observable("0"),
+    providerjobTraining:  ko.observable("0"),
+    providername:  ko.observable("0"),
+    providerphone:  ko.observable("0"),
+    providerpreEmployment:  ko.observable("0"),
+    providerprograms:  ko.observable("0"),
+    providerstate:  ko.observable("0"),
+    providersupportServices:  ko.observable("0"),
+    providerzip:  ko.observable("0")
+    
+    
+    
+};
 
 var eventFilterVM = {
         categoryIDFilter: ko.observable("0")
@@ -29,7 +58,7 @@ var eventFilterVM = {
     
 var eventslistVM = ko.observableArray([]);
 
-//getevents();
+getcategories();
 getquestions(0,'yes');
     
 
@@ -41,7 +70,8 @@ function viewModel(){
     self.category = categoryVM;
     self.categoryID = categoryIDVM;
     self.questionAnswer = questionAnswerVM;
-    self.eventFilter = eventFilterVM;
+    self.eventDetail = eventDetailVM;
+    self.categories = categoriesVM;
     
     self.epochDate = testEpochVM;
     
@@ -115,7 +145,7 @@ function getevents(catID) {
             urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/events/" + catID ;            
             };
     var request = $.ajax({
-            url:"http://10.93.126.85:8080/jobs-calendar/api/allevents",
+            url:urlconcat,
             type: 'GET',
             dataType:'jsonp',
             jsonpCallback: 'events',
@@ -125,7 +155,7 @@ function getevents(catID) {
             console.log(data.event);
             
             
-                
+                 eventsVM.removeAll();
                 $.each(data.event, function (i, item) {         
                     eventsVM.push(item);             
                     eventsVM.valueHasMutated();
@@ -141,11 +171,98 @@ function getevents(catID) {
         });
     }
 
+function geteventDetail(eventID) {
+   
+            urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/eventDetail/" + eventID ;            
+           
+        var request = $.ajax({
+            url:urlconcat,
+            type: 'GET',
+            dataType:'jsonp',
+            jsonpCallback: 'eventsDetail',
+            jsonp: 'callback',
+            success: function (data) {
+            console.log("event detail call good");
+            console.log(data);
+            
+            eventDetailVM.eventId(data.eventId);
+            eventDetailVM.startDt(data.startDt);
+            eventDetailVM.endDt(data.endDt);
+            eventDetailVM.name(data.name);
+            eventDetailVM.description(data.description);
+            eventDetailVM.location(data.location);
+            $.each(data.eventCategories, function (i, item) {         
+                    eventDetailVM.eventCategories.push(item);             
+                    eventDetailVM.eventCategories.valueHasMutated();
+            });
+            eventDetailVM.provideraddress1(data.provider.address1);
+            eventDetailVM.provideraddress2(data.provider.address2);
+            eventDetailVM.providercity(data.provider.city);
+            eventDetailVM.providerempSupport(data.provider.empSupport);
+            eventDetailVM.providerid(data.provider.id);
+            eventDetailVM.providerjobRetention(data.provider.jobRetention);
+            eventDetailVM.providerjobTraining(data.provider.jobTraining);
+            eventDetailVM.providername(data.provider.name);
+            eventDetailVM.providerphone(data.provider.phone);
+            eventDetailVM.providerpreEmployment(data.provider.preEmployment);
+            eventDetailVM.providerprograms(data.provider.programs);
+            eventDetailVM.providerstate(data.provider.state);
+            eventDetailVM.providersupportServices(data.provider.supportServices);
+            eventDetailVM.providerzip(data.provider.zip);
+                        
+    
+    
+            
+            $.mobile.changePage("#detail", { transition: "slide"});
+           
+            },
+            error: function (request, status, error) {
+                console.log("Error status " + status); 
+            }
+        });
+    }
+
+function getcategories() {
+    
+    var request = $.ajax({
+            url:"http://10.93.126.85:8080/jobs-calendar/api/categories",
+            type: 'GET',
+            dataType:'jsonp',
+            jsonpCallback: 'categories',
+            jsonp: 'callback',
+            success: function (data) {
+            console.log("categories call good");
+            console.log(data);
+            
+            
+                 categoriesVM.removeAll();
+                $.each(data, function (i, item) {         
+                    categoriesVM.push(item);             
+                    categoriesVM.valueHasMutated();
+                    
+                    
+                });
+            
+           
+            },
+            error: function (request, status, error) {
+                console.log("Error status " + status); 
+            }
+        });
+    
+}
    
 function answerQuestion(id,answer) {
     
     console.log(answer);
     getquestions(id,answer);
+    
+}
+
+function eventDetail(eventId) {
+    
+    console.log(eventId);
+   geteventDetail(eventId);
     
 }
 
