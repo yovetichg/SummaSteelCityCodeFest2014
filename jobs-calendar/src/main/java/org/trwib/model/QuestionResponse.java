@@ -7,12 +7,14 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+
 import java.io.Serializable;
 
 /**
  * Entity class representing a response to a question
  * @author bgray
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "question_response")
 @Inheritance(strategy= InheritanceType.JOINED)

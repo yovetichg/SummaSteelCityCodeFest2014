@@ -1,7 +1,5 @@
 package org.trwib.model;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,10 +8,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Entity class representing a Question itself
  * @author bgray
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "question")
 @PrimaryKeyJoinColumn(name="question_response_id")
