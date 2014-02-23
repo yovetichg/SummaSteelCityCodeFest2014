@@ -3,28 +3,28 @@ package org.trwib.dto;
 import java.io.Serializable;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.trwib.model.SimpleEvent;
 
-import org.trwib.model.Event;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @SuppressWarnings("serial")
 @JsonSerialize()
 public class EventsDto  implements Serializable {
-	private List<Event> events;
+	private List<SimpleEvent> events;
 	private int page;
 	private int size;
 
-	public EventsDto(List<Event> events, int page, int size) {
+	public EventsDto(List<SimpleEvent> events, int page, int size) {
 		this.events = events;
 		this.page = page;
 		this.size = size;
 	}
 	
-	public List<Event> getEvent() {
+	public List<SimpleEvent> getEvent() {
 		return events;
 	}
 
-	public void setEvent(List<Event> events) {
+	public void setEvent(List<SimpleEvent> events) {
 		this.events = events;
 	}
 

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.trwib.dto.EventsDto;
-import org.trwib.model.Event;
 import org.trwib.model.EventCategory;
+import org.trwib.model.SimpleEvent;
 import org.trwib.service.EventService;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
@@ -33,7 +33,7 @@ public class EventController {
 						@RequestParam(value="size", defaultValue="10") final Integer size,
     					@RequestParam(value="callback") final String callback) {
         LOGGER.debug("Getting all events");
-        List<Event> list = eventService.getAllEvents(page, size);
+        List<SimpleEvent> list = eventService.getAllEvents(page, size);
         return new JSONPObject(callback, new EventsDto(list, page, size));
     }
 
@@ -44,7 +44,7 @@ public class EventController {
 			@RequestParam(value="size", defaultValue="10") final Integer size,
     					@RequestParam(value="callback") final String callback) {
         LOGGER.debug("Getting all events for category {}", categoryId);
-        List<Event> list = eventService.getEventsByCategory(categoryId, page, size);
+        List<SimpleEvent> list = eventService.getEventsByCategory(categoryId, page, size);
         return new JSONPObject(callback, new EventsDto(list, page, size));
     }
     
