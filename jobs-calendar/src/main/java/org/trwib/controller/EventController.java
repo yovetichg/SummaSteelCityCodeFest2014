@@ -53,7 +53,7 @@ public class EventController {
     @RequestMapping(value = "/eventDetail/{eventId}", method = RequestMethod.GET, produces="application/json")
     public JSONPObject getEventDetail(@PathVariable("eventId") final Integer eventId,
     					@RequestParam(value="callback") final String callback) {
-        LOGGER.debug("Getting all events by ID {}", eventId);
+        LOGGER.debug("Getting event by ID {}", eventId);
         FullEvent event = eventService.getEventDetail(eventId);
         return new JSONPObject(callback, event);
     }
