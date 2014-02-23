@@ -333,7 +333,7 @@ function FindEventOnMap(address) {
         });
     }
     
-     $.mobile.changePage("#map_canvas", { transition: "slide"});
+     $.mobile.changePage("#google_map", { transition: "slide"});
     return true;
 }  
 

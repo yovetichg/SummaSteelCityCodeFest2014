@@ -29,3 +29,11 @@ body {
     padding: 8px;
     margin: 16px;
 }
+
+#map_canvas {
+    min-height: 640px;
+}
+
+div header.ui-bar h1.ui-title {
+    margin: 0 auto;
+}
