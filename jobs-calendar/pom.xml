@@ -6,7 +6,7 @@
     <artifactId>jobs-calendar</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>Spring/JPA/Knockout.js Archetype Sample Project</name>
+    <name>Three Rivers Workforce Investment Board</name>
 
     <properties>
         <java.version>1.6</java.version>
