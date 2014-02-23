@@ -49,6 +49,7 @@ public class Question extends QuestionResponse {
         this.question = question;
     }
 
+    @JsonIgnore
     public Boolean getFirst() {
         return isFirst;
     }
