@@ -32,7 +32,7 @@
         <div data-display="overlay" data-role="panel" id="menu" data-theme="b">            
             <ul data-role="listview">
               <li><a href="#">View All Events</a></li>
-              <li><a href="#">Start Over</a></li>
+              <li><a href="#page1">Start Over</a></li>
               <li data-role="collapsible" data-iconpos="right" data-inset="false">
                 <h2>View By Category</h2>
                 <ul data-role="listview" data-theme="b">
@@ -47,20 +47,23 @@
                   <li><a href="#">Soft Skills Workshops</a></li>
                 </ul>
               </li>
-              <li><a href="#">Calendar</a></li>
               <li><a href="#">Help</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#contact">Contact</a></li>
                 <li data-icon="arrow-l"><a href="#menuBtn" data-rel="close">Close</a></li>
             </ul>
         </div>
         <section class="ui-content" role="main">
-            <h1>Are you looking for a job?</h1>
-            <table width="100%">
-                <tr>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">Yes</button></td>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">No</button></td>
-                </tr>
-            </table>            
+            <section class="ui-content">
+                <h1>Are you looking for a job?</h1>
+            </section>
+            <section class="ui-content">
+                <table width="100%">
+                    <tr>
+                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">Yes</button></td>
+                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">No</button></td>
+                    </tr>
+                </table>  
+            </section>          
         </section>
     </div>
     
@@ -72,13 +75,18 @@
          </header>
         <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
         <section class="ui-content" role="main">
-            <h1>Do you have a goal occupation?</h1>
-            <table width="100%">
-                <tr>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page3')">Yes</button></td>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page3')">No</button></td>
-                </tr>
-            </table>
+            
+            <section class="ui-content">
+                <h1>Do you have a goal occupation?</h1>
+            </section>
+            <section class="ui-content">
+                <table width="100%">
+                    <tr>
+                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page3')">Yes</button></td>
+                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page3')">No</button></td>
+                    </tr>
+                </table>
+            </section>
         </section>
     </div>
 
@@ -90,13 +98,17 @@
          </header>
         <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
         <section class="ui-content" role="main">
-            <h1>Do you have an accurate and up to date resume?</h1>
-            <table width="100%">
-                <tr>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">Yes</button></td>
-                    <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">No</button></td>
-                </tr>
-            </table>
+            <section class="ui-content">
+                <h1>Do you have an accurate and up to date resume?</h1>
+            </section>
+            <section class="ui-content">
+                <table width="100%">
+                    <tr>
+                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">Yes</button></td>
+                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">No</button></td>
+                    </tr>
+                </table>
+            </section>
         </section>
     </div>
         
@@ -112,7 +124,7 @@
                   <li data-role="list-divider" role="heading">Resume Workshops</li>
                   <!-- ko foreach: eventsTEST -->
                   <li>
-                      <a href="#map_canvas">
+                      <a href="#map_canvas" onclick="FindEventOnMap()">
                         <div data-bind="text: name"></div>
                         <div data-bind="text: startDate"></div>
                       </a>
@@ -128,12 +140,34 @@
               </li>
               <!-- /ko -->
               </ul>  
-         </section>  
-
-
-                
+         </section>
      </div>
+
+    <div data-role="page" id="map_canvas">
+
+    </div>
     
+    <div data-role="page" id="contact" data-theme="a">
+        <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
+            <a id="menuBtn" class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
+            <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
+            <h1 data-icon="bars" class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
+         </header>
+        <section class="ui-content" role="main">
+            <h2 class="ui-header ui-bar-inherit">Contact Us</h2>
+            <section class="ui-content">
+                <div>Centre City Tower, Suite 2600</div>
+                <div>650 Smithfield Street</div>
+                <div>Pittsburgh, PA 15222</div>
+            </section>
+            <section class="ui-content">
+                <div><a href="mailto:info@trwib.org">info@trwib.org</a></div>
+                <div><a href="tel:4125527090">412-552-7090</a></div>
+                <div>412-552-7091 fax</div>
+            </section>
+        </section>
+    </div>
+
     <div data-role="page" id="question">
         <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar-a" role="nav-bar">
             <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
@@ -159,6 +193,8 @@
         <script type="text/javascript" src="static/js/lib/jquery.mobile-1.4.1.js"></script>
         <script type="text/javascript" src="static/js/app/vm.js?123456789"></script>
         <script type="text/javascript" src="static/js/app/app.js?123456789"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script type="text/javascript" src="static/js/app/map.js"></script>
       
      </body>
      

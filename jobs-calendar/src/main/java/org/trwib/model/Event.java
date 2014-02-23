@@ -29,16 +29,20 @@ public class Event implements Serializable {
 
 	private String name;
 
-	@Column(name="provider_id")
-	private int providerId;
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="provider_id")
+	private Provider provider;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="start_dt")
 	private Date startDt;
 
-	//bi-directional many-to-one association to EventCategoryAssociation
-	//@OneToMany(mappedBy="event", fetch=FetchType.LAZY)
-	//private List<EventCategoryAssociation> eventCategoryAssociations;
+	// Connect to EventCategory via the EventCategoryAssociation 
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="event_category_association", 
+		joinColumns={@JoinColumn(name="event_id")},
+		inverseJoinColumns={@JoinColumn(name="event_category_id")})
+	private List<EventCategory> eventCategories;
 
 	public Event() {
 	}
@@ -83,12 +87,12 @@ public class Event implements Serializable {
 		this.name = name;
 	}
 
-	public int getProviderId() {
-		return this.providerId;
+	public Provider getProvider() {
+		return this.provider;
 	}
 
-	public void setProviderId(int providerId) {
-		this.providerId = providerId;
+	public void setProvider(Provider provider) {
+		this.provider = provider;
 	}
 
 	public Date getStartDt() {
@@ -98,27 +102,9 @@ public class Event implements Serializable {
 	public void setStartDt(Date startDt) {
 		this.startDt = startDt;
 	}
-/*
-	public List<EventCategoryAssociation> getEventCategoryAssociations() {
-		return this.eventCategoryAssociations;
+
+	public List<EventCategory> getEventCategories() {
+		return this.eventCategories;
 	}
 
-	public void setEventCategoryAssociations(List<EventCategoryAssociation> eventCategoryAssociations) {
-		this.eventCategoryAssociations = eventCategoryAssociations;
-	}
-
-	public EventCategoryAssociation addEventCategoryAssociation(EventCategoryAssociation eventCategoryAssociation) {
-		getEventCategoryAssociations().add(eventCategoryAssociation);
-		eventCategoryAssociation.setEvent(this);
-
-		return eventCategoryAssociation;
-	}
-
-	public EventCategoryAssociation removeEventCategoryAssociation(EventCategoryAssociation eventCategoryAssociation) {
-		getEventCategoryAssociations().remove(eventCategoryAssociation);
-		eventCategoryAssociation.setEvent(null);
-
-		return eventCategoryAssociation;
-	}
-*/
 }
