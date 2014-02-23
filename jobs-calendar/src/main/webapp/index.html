@@ -142,7 +142,9 @@
             <div>
                 <span>3/2/14</span> - <span>3/3/14</span>
             </div>
-            <div><a href="#map_canvas" onclick="FindEventOnMap('PA Careerlink Downtown Pittsburgh');">PA Careerlink Downtown Pittsburgh</a></div>
+            <div><a href="" data-bind="click: function() {FindEventOnMap(eventDetail.location())}"><span data-bind="text: eventDetail.location"></span></a></div>
+                     
+                     
         </section>
         <section class="ui-content">
             <div>When: Mon Mar 4, 2013 9:30am to 11am&nbsp; EST<br> <br>Where: CareerLink <br>Event Status: confirmed</div>
@@ -236,7 +238,7 @@
         <script type="text/javascript" src="static/js/app/vm.js?123456789"></script>
         <script type="text/javascript" src="static/js/app/app.js?123456789"></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script type="text/javascript" src="static/js/app/map.js"></script>
+       
       
      </body>
      
