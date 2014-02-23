@@ -54,63 +54,20 @@
         </div>
         <section class="ui-content" role="main">
             <section class="ui-content">
-                <h1>Are you looking for a job?</h1>
+                <h1><span data-bind="text: question"></span></h1>
             </section>
             <section class="ui-content">
                 <table width="100%">
-                    <tr>
-                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">Yes</button></td>
-                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page2')">No</button></td>
-                    </tr>
-                </table>  
+                <tr>
+                    <td><a href="" data-role="button" data-bind="click: function() {answerQuestion(questionID(),'yes')}">Yes</a></td>
+                    <td><a href="" data-role="button" data-bind="click: function() {answerQuestion(questionID(),'no')}">No</a></td>
+                </tr>
+            </table> 
             </section>          
         </section>
+        
     </div>
     
-    <div data-role="page" id="page2">
-        <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
-            <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
-            <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
-            <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
-         </header>
-        <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
-        <section class="ui-content" role="main">
-            
-            <section class="ui-content">
-                <h1>Do you have a goal occupation?</h1>
-            </section>
-            <section class="ui-content">
-                <table width="100%">
-                    <tr>
-                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page3')">Yes</button></td>
-                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#page3')">No</button></td>
-                    </tr>
-                </table>
-            </section>
-        </section>
-    </div>
-
-    <div data-role="page" id="page3">
-        <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
-            <a class="ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" href="#menu"></a>
-            <img border="0" src="static/img/favicon_32x32.ico" alt="Logo, Pittsburgh Works" style="float:right;display:inline;padding:5px 25px 0 0"/>
-            <h1 class="ui-title" role="heading" aria-level="1">Pittsburgh Works</h1>
-         </header>
-        <div data-display="overlay" data-role="panel" id="menu">Menu goes here</div>
-        <section class="ui-content" role="main">
-            <section class="ui-content">
-                <h1>Do you have an accurate and up to date resume?</h1>
-            </section>
-            <section class="ui-content">
-                <table width="100%">
-                    <tr>
-                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">Yes</button></td>
-                        <td><button class=" ui-btn ui-btn-a ui-btn-icon-left ui-shadow ui-corner-all" onclick="$.mobile.changePage('#EventList')">No</button></td>
-                    </tr>
-                </table>
-            </section>
-        </section>
-    </div>
         
      <div data-role="page" id="EventList" data-theme="a" >
          <header data-role="header" data-id="foo1" data-position="fixed" class="ui-header ui-bar ui-bar-a" role="nav-bar">
