@@ -7,6 +7,7 @@ var testeventsVM = {
         server_id2: ko.observable("0.0.0.0"),
         node_port: ko.observable("13390")
     };
+var testEpochVM = ko.observable("1407794400000");
 
 var questionIDVM = ko.observable("2");
 
@@ -24,48 +25,34 @@ var eventFilterVM = {
         categoryIDFilter: ko.observable("0")
     };
 
-var eventslistTestVM = ko.observableArray([
-    {id: ko.observable("98"),
-    name: ko.observable("Recruiting for Pickers Packers"),
-    startDate: ko.observable("2014-02-22"),
-    endDate: ko.observable("2014-02-22"),
-    locationName: ko.observable("PA Careerlink Downtown Pittsburgh"),
-    locationAddr1: ko.observable("9600 Babcock Blvd"),
-    locationAddr2: ko.observable(""),
-    locationCity: ko.observable("Allison Park"),
-    locationState: ko.observable("PA"),
-    locationZipcode: ko.observable("15101"),
-    description: ko.observable("When: Mon Mar 4, 2013 9:30am to 11am&nbsp; EST<br> <br>Where: CareerLink<br>Event Status: confirmed"),
-    categoryID: ko.observable("12") 
-    },
-    {id: ko.observable("98"),
-    name:ko.observable(" Pickers Packers"),
-    startDate:("2014-02-22"),
-    endDate:("2014-02-22"),
-    location:("location2")},
-    {id: ko.observable("100"),
-    name:ko.observable("Recruiting"),
-    startDate:("2014-02-22"),
-    endDate:("2014-02-22"),
-    location:("location 3")},
-]);
+
     
 var eventslistVM = ko.observableArray([]);
 
-getevents();
+//getevents();
 getquestions(0,'yes');
     
 
 function viewModel(){
     var self = this;
     self.events = eventsVM;
-    self.eventsTEST = eventslistTestVM;
     self.question = questionVM;
     self.questionID = questionIDVM;
     self.category = categoryVM;
     self.categoryID = categoryIDVM;
     self.questionAnswer = questionAnswerVM;
     self.eventFilter = eventFilterVM;
+    
+    self.epochDate = testEpochVM;
+    
+     ko.bindingHandlers.dateepoch = {
+        update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+            var value = valueAccessor(),
+            allBindings = allBindingsAccessor();
+            var valueUnwrapped = ko.utils.unwrapObservable(value);
+            $(element).text(utctimecnv(valueUnwrapped));
+        }
+    }
     
     
 	
@@ -122,28 +109,31 @@ function getquestions(id,answer) {
 
 function getevents(catID) {
     if (catID == 19){
-            urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/events/19";
+            urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/allevents";
             }
             else {
             urlconcat = "http://10.93.126.85:8080/jobs-calendar/api/events/" + catID ;            
             };
     var request = $.ajax({
-            url:urlconcat,
+            url:"http://10.93.126.85:8080/jobs-calendar/api/allevents",
             type: 'GET',
             dataType:'jsonp',
             jsonpCallback: 'events',
             jsonp: 'callback',
             success: function (data) {
             console.log("event call good");
+            console.log(data.event);
             
             
-                eventsVM.removeAll();
-                $.each(data, function (i, item) {         
+                
+                $.each(data.event, function (i, item) {         
                     eventsVM.push(item);             
-                    eventsVM.valueHasMutated();            
+                    eventsVM.valueHasMutated();
+                    
+                    
                 });
             
-            
+            $.mobile.changePage("#EventList", { transition: "slide"});
             },
             error: function (request, status, error) {
                 console.log("Error status " + status); 
@@ -158,6 +148,35 @@ function answerQuestion(id,answer) {
     getquestions(id,answer);
     
 }
+
+function utctimecnv(epochtime) {
+        var date = new Date(epochtime);
+        var DD = date.getDate();
+        var MM = date.getMonth() + 1;
+        var YY = date.getFullYear();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        if (minutes < 10) {
+            minutes = '0' + minutes};
+        var seconds = date.getSeconds();
+        var formattedTime = " ";
+        var AMPM = 'AM';
+        //        var formattedTime = hours + ':' + minutes + ':' + seconds;
+        if (hours > 11) {
+            AMPM = 'PM';
+            if (hours > 12) {
+                hours = hours - 12
+            };
+        };
+
+        if (epochtime > 0) {
+       
+        formattedTime = MM + '/' + DD + '/' + YY + ' ' + hours + ':' + minutes + ' ' + AMPM;
+        };
+
+
+        return formattedTime;
+    }
 
 
     

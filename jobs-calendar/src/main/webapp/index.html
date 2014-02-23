@@ -79,23 +79,14 @@
          <section class="ui-content" role="main">
               <ul id="list-events" data-role="listview" >
                   <li data-role="list-divider" role="heading">Resume Workshops</li>
-                  <!-- ko foreach: eventsTEST -->
+                  <!-- ko foreach: events -->
                   <li>
-                      <a href="#map_canvas" onclick="FindEventOnMap()">
                         <div data-bind="text: name"></div>
-                        <div data-bind="text: startDate"></div>
-                      </a>
+                        <div data-bind="dateepoch: startDt"></div>
+                     
                   </li>
                   <!-- /ko -->
-                  <!-- ko foreach: events -->
-              <li>
-                  <a>
-                    <div data-bind="text: id"></div>
-                    <div data-bind="text: description"></div>
-                    <div data-bind="text: end"></div>  
-                  </a>
-              </li>
-              <!-- /ko -->
+                  
               </ul>  
          </section>
      </div>
