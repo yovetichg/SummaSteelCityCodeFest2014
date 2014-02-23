@@ -67,8 +67,21 @@ CREATE TABLE `event_category_association` (
   `event_category_id` int(11) DEFAULT NULL,
   `event_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`event_category_association_id`),
-  KEY `event_id_idx` (`event_id`),
-  KEY `event_category_id_idx` (`event_category_id`),
-  CONSTRAINT `event_id` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `event_category_id` FOREIGN KEY (`event_category_id`) REFERENCES `event_category` (`question_response_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `event_category_association_event_id_idx` (`event_id`),
+  KEY `event_category_association_event_category_id_idx` (`event_category_id`),
+  CONSTRAINT `event_category_association_event_id` FOREIGN KEY (`event_id`) REFERENCES `event` (`event_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `event_category_association_event_category_id` FOREIGN KEY (`event_category_id`) REFERENCES `event_category` (`question_response_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `provider_category_association` (
+  `provider_category_association_id` int(11) NOT NULL AUTO_INCREMENT,
+  `provider_id` int(11) DEFAULT NULL,
+  `event_category_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`provider_category_association_id`),
+  KEY `provider_category_association_id_idx` (`provider_id`),
+  KEY `provider_category_association_event_category_id_idx` (`event_category_id`),
+  CONSTRAINT `provider_category_association_provider_id` FOREIGN KEY (`provider_id`) REFERENCES `provider` (`provider_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `provider_category_association_event_category_id` FOREIGN KEY (`event_category_id`) REFERENCES `event_category` (`question_response_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+

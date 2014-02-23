@@ -11,6 +11,7 @@ import javax.persistence.Table;
  * Entity class representing a category an event belongs to
  * @author bgray
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "event_category")
 @PrimaryKeyJoinColumn(name="question_response_id")
