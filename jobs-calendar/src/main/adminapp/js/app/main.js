@@ -1,4 +1,5 @@
 var defaultCategoryId = 14;
+var categories = {};
 
 $(function() {
 
@@ -7,7 +8,7 @@ $(function() {
 	});
 
 	$('#nav-view-events').click(function() {
-		showEventList(defaultCategoryId);
+		showEventList(false);
 	});
 
 
@@ -16,9 +17,9 @@ $(function() {
 		getevents(categoryId);
 	});
 
-	getcategories();
+	getcategories(showEventList(defaultCategoryId));
 
-	showEventList(defaultCategoryId);
+	
 });
 
 
@@ -26,11 +27,11 @@ function showEditEvent(addEvent) {
 	if (addEvent) {
 		$('#event-mode').html("Add Event");
 
-			$('#name').val("");
-			$('#provider').html("");
-			$('#description').html("");
-			$('#startdt').val("");
-			$('#enddt').val("");
+		$('#name').val("");
+		$('#provider').html("");
+		$('#description').html("");
+		$('#startdt').val("");
+		$('#enddt').val("");
 	}
 	else
 		$('#event-mode').html("Edit Event");
@@ -42,7 +43,9 @@ function showEditEvent(addEvent) {
 }
 
 function showEventList(categoryId) {
-	getevents(categoryId);
+
+	if (categoryId)
+		getevents(categoryId);
 
 	$('#nav-category').show();
 
@@ -79,7 +82,7 @@ function getevents(catID) {
 				html += '<td>' + item.location + '</td>';
 				html += '<td>' + utctimecnv(item.startDt) + '</td>';
 				html += '<td>' + utctimecnv(item.endDt) + '</td>';
-				html += '<td>[Category]</td>';
+				html += '<td>' + categories[catID] + '</td>';
 				html += '</tr>';
 
 				table.append(html);
@@ -126,7 +129,7 @@ function getevent(eventId) {
 	});
 }
 
-function getcategories() {
+function getcategories(success) {
     
     var request = $.ajax({
             url:"http://10.93.126.85:8080/jobs-calendar/api/categories",
@@ -139,13 +142,17 @@ function getcategories() {
             console.log(data);
             
 
-            	var categories = $('#nav-category .dropdown-menu');
+            	var navCategories = $('#nav-category .dropdown-menu');
            
                 $.each(data, function (i, item) {         
-
-                	categories.append('<li><a href="#" data-categoryid=' + item.id + '>' + item.description + '</a></li>');
+            		categories[item.id] = item.description;
+                	navCategories.append('<li><a href="#" data-categoryid=' + item.id + '>' + item.description + '</a></li>');
                     
                 });
+
+                if (success) {
+                	success();
+                }
             
            
             },
@@ -183,4 +190,4 @@ function utctimecnv(epochtime) {
 
 
         return formattedTime;
-}
+} 
