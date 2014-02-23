@@ -139,7 +139,7 @@
         </div>
         <section class="ui-content">
             <h2 class="ui-header ui-bar-inherit" data-bind="text: eventDetail.name"></h2>
-            <a class="ui-btn">Add To Calendar</a>
+            <a href="" data-role="button" data-bind="click: function() {save2cal()}">Add to Calendar</a>
             <div>
                 <span data-bind="dateepoch: eventDetail.startDt"></span> - <span data-bind="dateepoch: eventDetail.endDt"></span>
             </div>
