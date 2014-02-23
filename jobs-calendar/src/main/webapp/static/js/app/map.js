@@ -24,7 +24,8 @@ function FindEventOnMap(address) {
                 map.setCenter(results[0].geometry.location);
                 var marker = new google.maps.Marker({
                     map: map,
-                    position: results[0].geometry.location
+                    position: results[0].geometry.location,
+                    title: address
                 });
             }
             else {
