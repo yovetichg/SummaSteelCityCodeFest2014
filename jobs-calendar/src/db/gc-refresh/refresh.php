@@ -40,8 +40,10 @@
 		$provider_id = rand(10001,10084);
 
 		$result = mysql_query("INSERT INTO event (name, start_dt, end_dt, location, description, provider_id) 
-			VALUES ('$event->title','$event->start_time','$event->start_time','$event->location','$event->location', $provider_id)");
+			VALUES ('$event->title','$event->start_time','$event->end_time','$event->location','$event->description', $provider_id)");
 
+/*		echo "start_time: ".$event->start_time."<br />";
+		echo $event->link."<br />";*/
 
 		if (!$result) {
 			echo "event: ".mysql_error()."<br />";
@@ -56,9 +58,6 @@
 			}
 		}
 		
-
-		//echo $event->start_time;
-
 	}
 
 	mysql_close($conn);

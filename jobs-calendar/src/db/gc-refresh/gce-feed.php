@@ -3,7 +3,7 @@ class GCE_Feed{
 	private $feed_id = 1;
 	private $feed_title = '';
 	private $feed_url = 'http://www.google.com/calendar/feeds/pittsburghworks%40gmail.com/public/basic';
-	private $max_events = 250;
+	private $max_events = 1000;
 	private $cache_duration = 43200;
 	private $date_format = '';
 	private $time_format = '';
@@ -69,13 +69,17 @@ class GCE_Feed{
 		$path = substr( $url_parts['path'], 0, strrpos( $url_parts['path'], '/' ) ) . '/full-noattendees';
 
 		//Add the default parameters to the querystring (retrieving JSON, not XML)
-		$query = '?alt=json&singleevents=true&sortorder=descending&orderby=starttime';
+		$query = '?alt=json&sortorder=descending&orderby=starttime';
+		$query .= "&singleevents=true"; //Show recurring events
 
 		//Append the feed specific parameters to the querystring
 
-		$query .= '&start-min=' . date( 'Y-m-d\TH:i:s', $this->feed_start + ($this->gmt_offset * 3600) );
-		$query .= '&start-max=' . date( 'Y-m-d\TH:i:s', $this->feed_end + ($this->gmt_offset * 3600) );
+		$recurrence_end = strtotime("+6 month", time()); 
+
+		$query .= '&start-min=' . date( 'Y-m-d\TH:i:s', time() + ($this->gmt_offset * 3600) );
+		$query .= '&start-max=' . date( 'Y-m-d\TH:i:s', $recurrence_end + ($this->gmt_offset * 3600) );
 		$query .= '&max-results=' . $this->max_events;
+		$query .= '&recurrence-expansion-end=' . date( 'Y-m-d\TH:i:s', $recurrence_end + ($this->gmt_offset * 3600) );
 
 		if ( ! empty( $this->timezone ) )
 			$query .= '&ctz=' . $this->timezone;
@@ -146,7 +150,11 @@ class GCE_Feed{
 	//Convert an ISO date/time to a UNIX timestamp
 	function iso_to_ts( $iso ) {
 		sscanf( $iso, "%u-%u-%uT%u:%u:%uZ", $year, $month, $day, $hour, $minute, $second );
-		return date('Y-m-d H:i:s', mktime( $hour, $minute, $second, $month, $day, $year ));
+
+		$time = mktime( $hour, $minute, $second, $month, $day, $year );
+		$datetime = date('Y-m-d H:i:s', $time );
+
+		return $datetime;
 	}
 
 	//Return error message, or false if no error occurred
