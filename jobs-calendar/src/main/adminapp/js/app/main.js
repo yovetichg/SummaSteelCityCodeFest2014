@@ -1,16 +1,16 @@
+var defaultCategoryId = 14;
+
 $(function() {
 
 	$('#nav-add-event').click(function() {
-		$('#entry-form').show();
-		$('#event-list').hide();
+		showEditEvent(true);
 	});
 
 	$('#nav-view-events').click(function() {
-		$('#entry-form').hide();
-		$('#event-list').show();
+		showEventList(defaultCategoryId);
 	});
 
-	showEventList(14);
+	showEventList(defaultCategoryId);
 });
 
 
