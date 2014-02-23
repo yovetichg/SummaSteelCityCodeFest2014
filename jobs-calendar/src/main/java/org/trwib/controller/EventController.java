@@ -7,13 +7,15 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.trwib.dto.EventsDto;
-import org.trwib.model.Event;
+import org.trwib.model.EventCategory;
+import org.trwib.model.FullEvent;
+import org.trwib.model.SimpleEvent;
 import org.trwib.service.EventService;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
@@ -26,18 +28,41 @@ public class EventController {
     private EventService eventService;
 
     @ResponseBody
-    @RequestMapping(value = "/events", method = RequestMethod.GET, produces="application/json")
-    public JSONPObject getEvent(@RequestParam("callback") final String callback) {
+    @RequestMapping(value = "/allevents", method = RequestMethod.GET, produces="application/json")
+    public JSONPObject getAllEvents( 
+						@RequestParam(value="page", defaultValue="0") final Integer page,
+						@RequestParam(value="size", defaultValue="10") final Integer size,
+    					@RequestParam(value="callback") final String callback) {
         LOGGER.debug("Getting all events");
-        List<Event> list = eventService.getEventsByCategory(0L, 1, 20);
-        return new JSONPObject(callback, new EventsDto(list, 1, 20));
+        List<SimpleEvent> list = eventService.getAllEvents(page, size);
+        return new JSONPObject(callback, new EventsDto(list, page, size));
     }
 
     @ResponseBody
-    @RequestMapping(value = "/events", method = RequestMethod.POST, produces="application/json")
-    public JSONPObject createEvent(@RequestParam("callback") final String callback,
-                                   @RequestBody(required = true) Event event) {
-        LOGGER.debug("Creating event [{}]", event);
-        return new JSONPObject(callback, eventService.create(event));
+    @RequestMapping(value = "/events/{categoryId}", method = RequestMethod.GET, produces="application/json")
+    public JSONPObject getEvents(@PathVariable("categoryId") final Long categoryId,
+			@RequestParam(value="page", defaultValue="0") final Integer page,
+			@RequestParam(value="size", defaultValue="10") final Integer size,
+    					@RequestParam(value="callback") final String callback) {
+        LOGGER.debug("Getting all events for category {}", categoryId);
+        List<SimpleEvent> list = eventService.getEventsByCategory(categoryId, page, size);
+        return new JSONPObject(callback, new EventsDto(list, page, size));
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/eventDetail/{eventId}", method = RequestMethod.GET, produces="application/json")
+    public JSONPObject getEventDetail(@PathVariable("eventId") final Integer eventId,
+    					@RequestParam(value="callback") final String callback) {
+        LOGGER.debug("Getting all events by ID {}", eventId);
+        FullEvent event = eventService.getEventDetail(eventId);
+        return new JSONPObject(callback, event);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/categories", method = RequestMethod.GET, produces="application/json")
+    public JSONPObject getCategories(@RequestParam("callback") final String callback) {
+        LOGGER.debug("Getting all categories");
+        List<EventCategory> list = eventService.getAllCategories();
+        return new JSONPObject(callback, list);
     }
  }
