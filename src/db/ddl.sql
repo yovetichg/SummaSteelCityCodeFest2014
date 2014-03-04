@@ -1,7 +1,3 @@
-CREATE DATABASE `codefest` /*!40100 DEFAULT CHARACTER SET latin1 */;
-
-USE codefest;
-
 CREATE TABLE `question_response` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
