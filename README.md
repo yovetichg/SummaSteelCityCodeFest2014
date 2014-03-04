@@ -34,6 +34,7 @@ git push heroku master
 
 ## Resources
 
+* [Running app](http://trwib-jobs-calendar.herokuapp.com/)
 * [Heroku app dashboard](https://dashboard.heroku.com/apps/trwib-jobs-calendar/)
 * [Live app logs](https://papertrailapp.com/systems/trwib-jobs-calendar/events)
 * [DB information](https://www.cleardb.com/database/details?id=191E94E1CE0DD7A187E2FF60869A89FE)
